@@ -1,77 +1,69 @@
-# Portfolio Cybersécurité & Infrastructures — Florent Vazeux
+# Portfolio — Florent Vazeux
 
-> **Review me in 2 minutes:** Jump to [Quick Links](#-quick-links), then open any project's Proof (screenshot/schema) and the Result summary.
+**Technicien support et systèmes & réseaux (TSSR)** — Administration d'infrastructures sécurisées.
 
----
-
-## 🗺 Navigation
-- [Quick Links](#-quick-links)
-- [Featured Projects (Top 5)](#-featured-projects-top-5)
-- [Lanes & Artifacts](#-lanes--artifacts)
-- [Home Lab (Axone)](#-home-lab-axone)
-- [The 4P Loop + 6-Week Cadence](#-the-4p-loop--6week-cadence)
+Bienvenue sur mon portfolio. Vous y trouverez mes projets d'infrastructure, de supervision et d'automatisation, construits sur un homelab personnel.
 
 ---
 
-## 🔗 Quick Links
-- **Portfolio site:** _(à ajouter après hébergement)_
-- **LinkedIn:** [florent-vazeux](https://www.linkedin.com/in/flo-vz04/) • **GitHub:** _(à ajouter)_
-- **Resume (PDF):** _(à ajouter)_ • **One-pager:** _(à ajouter)_
-- **Email:** florentbv@outlook.fr
+## 📬 Contact
+
+- **LinkedIn :** [florent-vazeux](https://www.linkedin.com/in/flo-vz04/)
+- **Email :** [florentbv@outlook.fr](mailto:florentbv@outlook.fr)
 
 ---
 
-## ⭐ Featured Projects (Top 5)
+## ⭐ Projets
 
-| Area | Title | Proof | Summary |
-|---|---|---|---|
-| Infra | Homelab Axone — Domaine AD + parc hétérogène | [topology.png](./homelab/topology.png) | Domaine `serv-net.lan`, 5 postes (3 Linux Mint + 2 Win 11), GPO, partages cloisonnés |
-| Blue | Wazuh SIEM — gestion des vulnérabilités | [inventaire Wazuh] | 25 CVE analysées (19 artefacts, 6 réelles en attente de patch), cycle Détection→Traitement→Vérification |
-| Blue | Wazuh SIEM — agent sur 8 machines | Captures dashboard | Supervision centralisée du parc Axone |
-| GRC | Politique de sécurité AD / GPO | GPO + captures | Mot de passe 12 car., verrouillage, SMBv1 désactivé, cloisonnement par OU |
-| Auto | Ansible — automatisation Linux | Playbooks | Wallpaper, agents, MAJ auto déployés sur les postes Mint |
-
-> Each project folder includes **Context → Steps → Proof → Result → Next**.
-
----`
-
-## 🧭 Lanes & Artifacts
-
-### Infrastructure & Administration (Blue/GRC)
-**Focus:** Déploiement, administration, supervision d'infrastructure d'entreprise.
-
-- **Artifacts**
-  - `homelab/` — schéma réseau, description du lab
-  - Captures : AD Users & Computers, GPO, GLPI, Wazuh
-
----
-
-## 🧪 Home Lab (Axone)
+### 🖧 Homelab Axone — Infrastructure d'entreprise
 
 **Contexte :** PME fictive "Axone" — infogérance pour collectivités. Besoin d'une infrastructure centralisée avec parc hétérogène.
 
-**Stack & Topologie**
-- **Domaine :** Active Directory `serv-net.lan` (Win Server 2022) — AD, DNS, DHCP
-- **Postes Linux :** 3 × Linux Mint 22 (Compta, RH, Communication) — jointure SSSD, sudo restreint par groupe AD
-- **Postes Windows :** 2 × Windows 11 (Informatique, Direction) — GPO, RSAT
-- **Supervision :** Wazuh (SIEM, 8 agents) + GLPI (inventaire multi-entités)
-- **Automatisation :** Ansible (déploiement config Linux)
-- **Réseau :** 3 sous-réseaux libvirt, Tailscale VPN mesh, NAT
+**Ce qui a été réalisé :**
+- Domaine **Active Directory** `serv-net.lan` (Windows Server 2022) — AD, DNS, DHCP
+- **5 postes** joints au domaine : 3 Linux Mint 22 + 2 Windows 11
+- **GPO** : politique de mot de passe, verrouillage, désactivation SMBv1, fond d'écran, mappage lecteurs
+- **Partages cloisonnés** par groupes AD (Finance, RH, Communication, Direction, Commun)
+- **Supervision** : Wazuh (SIEM, 8 agents) + GLPI (inventaire multi-entités)
+- **Automatisation** : Ansible (déploiement de configuration Linux)
+- **Réseau** : 3 sous-réseaux libvirt, VPN Tailscale, NAT
 
-**Hardware**
-- Dell OptiPlex (serveur, 24 Go) • Chuwi N100 (hôte Linux, 8 Go) • Fedora Laptop (hôte Win11, 32 Go)
+**Matériel :** Dell OptiPlex (serveur, 24 Go) · Chuwi N100 (hôte Linux, 8 Go) · Fedora Laptop (hôte Windows, 32 Go)
 
-**Diagram :** [`homelab/topology.png`](./homelab/topology.png)
-
----
-
-## 🔄 The 4P Loop + 6-Week Cadence
-- **Prepare:** définir le besoin (PME Axone, parc hétérogène)
-- **Practice:** déploiement réel (AD, GPO, partages, agents)
-- **Proof:** captures, schéma, procédures
-- **Participate:** documenter et partager
+**[Voir le schéma réseau](./homelab/topology.png)**
 
 ---
 
-## 📄 License
-Licensed under the **Apache License, Version 2.0**.
+### 🛡 Supervision SIEM — Wazuh
+
+- SIEM déployé en Docker sur le serveur
+- **8 agents** déployés sur l'ensemble du parc
+- Étude de cas : **25 vulnérabilités Critical** détectées, analysées et priorisées
+- Cycle documenté : Détection → Analyse → Traitement → Vérification
+
+---
+
+### 📋 Gestion de parc — GLPI
+
+- Inventaire automatisé des postes (glpi-agent déployé via Ansible)
+- Entité dédiée "Axone" pour cloisonner le parc
+- Administrateur délégué (droits limités à l'entité)
+
+---
+
+## 🚀 Compétences
+
+| Domaine | Technologies |
+|---|---|
+| **Systèmes** | Windows Server 2022, Windows 11, Linux (Debian, Mint), Active Directory |
+| **Réseau** | VLAN, DHCP, DNS, VPN (Tailscale), NAT, routage |
+| **Supervision** | Wazuh (SIEM), GLPI |
+| **Automatisation** | Ansible, scripts |
+| **Virtualisation** | KVM (libvirt), Docker |
+| **Sécurité** | GPO, moindre privilège, cloisonnement, durcissement |
+
+---
+
+## 📄 À propos
+
+Portfolio construit et hébergé à partir d'un homelab personnel. Projets en cours d'enrichissement.
