@@ -13,7 +13,7 @@
 
 **Matériel :** Dell OptiPlex (serveur, 24 Go) · Chuwi N100 (hôte Linux, 8 Go) · Fedora Laptop (hôte Windows, 32 Go)
 
-![Libvirt - VM](./gestionnaire-vm.pmg.png)
+![Libvirt - VM](./gestionnaire-vm.png)
 *Vue des VM's depuis le Gestionnaire Linux*
 
 ---
@@ -50,6 +50,30 @@ Le serveur étant hébergé au domicile du dirigeant (pas de local technique), l
 | PC-Communication | Linux Mint 22 | Communication | Wazuh + GLPI |
 | PC-Info-01 | Windows 11 | Informatique | Wazuh + GLPI |
 | PC-Direction | Windows 11 | Direction | Wazuh + GLPI |
+
+---
+
+## 🗂 Active Directory — structure et stratégies
+
+**Unités d'organisation :** chaque service a son OU dédiée (Comptabilité, RH, Direction, Communication, Informatique, Serveurs) pour appliquer des stratégies différenciées.
+
+![Structure des OU](./ad-users.png)
+
+**Stratégies de groupe (GPO) :**
+
+| GPO | Effet |
+|---|---|
+| GPO-Password | Mot de passe 12 car., complexité, expiration 90j |
+| GPO-Lockout | Verrouillage après 5 tentatives |
+| GPO-SMBv1 | Désactivation SMBv1 |
+| GPO-Wallpaper | Fond d'écran Axone |
+| GPO-DriveMapping | Mappage lecteurs réseau |
+
+![Liste des GPO](./gpo-list.png)
+
+**Accès distant admin (RDP) :**
+
+![Accès distant - Bureau à distance](./rdp-admin.png)
 
 ---
 
@@ -92,8 +116,32 @@ Les données sont cloisonnées par service via des partages SMB sur le serveur, 
 
 ---
 
-## 🎨 Branding du parc
+## ⚙️ Automatisation — Ansible
 
-Les postes Axone utilisent un fond d'écran personnalisé déployé via GPO et Ansible.
+Gestion centralisée de la configuration des postes Linux Mint via Ansible (depuis le Chuwi, controller).
 
-![Wallpaper Axone](./wallpaper-axone.jpg)
+| Playbook | Rôle |
+|---|---|
+| `wallpaper.yml` | Déploiement du fond d'écran Axone |
+| `wazuh-agent.yml` | Déploiement des agents SIEM |
+| `maj-auto.yml` | MAJ de sécurité automatiques au boot |
+| `glpi-agent.yml` | Déploiement des agents d'inventaire GLPI |
+| `dns-fix.yml` | Correctif de résolution DNS |
+
+*Ansible est l'équivalent des GPO pour le parc Linux : déploiement centralisé, reproductible, versionné.*
+
+---
+
+## 🔄 Mises à jour automatiques
+
+Chaque machine applique les mises à jour de sécurité automatiquement, avec traçabilité :
+
+| Machine | Méthode |
+|---|---|
+| Dell | `unattended-upgrades` (sécurité), timer 01:00 |
+| Chuwi | Service systemd au boot |
+| 3 Mint | Service systemd au boot (déployé via Ansible) |
+
+*Les logs de MAJ sont tracés dans `/var/log/maj-auto.log`.*
+
+---
