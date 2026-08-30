@@ -19,6 +19,26 @@
 
 ---
 
+## 📁 Partages de fichiers et cloisonnement
+
+Les données sont cloisonnées par service via des partages SMB sur le serveur, accessibles selon les groupes AD.
+
+| Partage | Accès (groupes AD) | Contenu |
+|---|---|---|
+| `Finance` | grp_compta, grp_direction | Données comptables |
+| `RH` | grp_rh, grp_direction | Données RH (paie, contrats) |
+| `Communication` | grp_communication, grp_direction | Communication interne |
+| `Commun` | Utilisateurs du domaine | Documents partagés |
+| `Direction` | grp_direction | Direction |
+
+![Partages Windows - lecteurs mappés](./partages-win11.png)
+*Vue des lecteurs réseau mappés sur un poste Windows 11 (F:, R:, M:, S:, D:)*
+
+![Partages Linux - montage CIFS](./partages-linux.png)
+*Vue des partages montés sur un poste Linux Mint (dossiers dans le réseau)*
+
+---
+
 ## 🛡 Supervision SIEM — Wazuh
 
 ![Dashboard Wazuh - agents actifs](../blue/wazuh-agents.png)
