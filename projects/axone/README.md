@@ -75,7 +75,7 @@ Les données sont cloisonnées par service via des partages SMB sur le serveur, 
 
 ## 🛡 Supervision SIEM — Wazuh
 
-![Dashboard Wazuh - agents actifs](../blue/wazuh-agents.png)
+![Dashboard Wazuh - agents actifs](./wazuh-agents.png)
 
 - SIEM déployé en Docker sur le serveur
 - **7 agents** déployés sur l'ensemble du parc
