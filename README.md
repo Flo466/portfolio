@@ -1,6 +1,7 @@
 # Portfolio — Florent Vazeux
 
-**Administrateur d'infrastructures sécurisées (AIS)** — En formation · Titre professionnel en cours.
+# Administrateur d'infrastructures sécurisées (AIS)  
+**En formation · Titre professionnel en cours.**
 
 ---
 
