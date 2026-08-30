@@ -29,6 +29,8 @@
 - **Automatisation** : Ansible (déploiement de configuration Linux)
 - **Réseau** : 3 sous-réseaux libvirt, VPN Tailscale, NAT
 
+![Active Directory - utilisateurs et OU](./homelab/ad-users.png)
+
 **Matériel :** Dell OptiPlex (serveur, 24 Go) · Chuwi N100 (hôte Linux, 8 Go) · Fedora Laptop (hôte Windows, 32 Go)
 
 ---
@@ -62,6 +64,14 @@
 | **Automatisation** | Ansible, scripts |
 | **Virtualisation** | KVM (libvirt), Docker |
 | **Sécurité** | GPO, moindre privilège, cloisonnement, durcissement |
+
+---
+
+## 🎨 Branding du parc
+
+Les postes Axone utilisent un fond d'écran personnalisé déployé via Ansible.
+
+![Wallpaper Axone](./homelab/wallpaper-axone.jpg)
 
 ---
 
