@@ -1,7 +1,6 @@
 # Portfolio — Florent Vazeux
 
-**Technicien support et systèmes & réseaux (TSSR)** — Administration d'infrastructures sécurisées.
-
+**Administrateur d'infrastructures sécurisées (AIS)** — En formation · Titre professionnel en cours.
 Bienvenue sur mon portfolio. Vous y trouverez mes projets d'infrastructure, de supervision et d'automatisation, construits sur un homelab personnel.
 
 ---
@@ -66,4 +65,4 @@ Bienvenue sur mon portfolio. Vous y trouverez mes projets d'infrastructure, de s
 
 ## 📄 À propos
 
-Portfolio construit et hébergé à partir d'un homelab personnel. Projets en cours d'enrichissement.
+En formation **Administrateur d'infrastructures sécurisées (AIS)** au GRETA 91. Portfolio construit à partir d'un homelab personnel. Projets en cours d'enrichissement.
