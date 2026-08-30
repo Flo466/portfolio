@@ -40,6 +40,19 @@ Le serveur étant hébergé au domicile du dirigeant (pas de local technique), l
 
 ---
 
+## 📊 Vue d'ensemble du parc
+
+| Machine | OS | Rôle | Supervision |
+|---|---|---|---|
+| SRV-AD | Windows Server 2022 | AD, DNS, DHCP | Wazuh + GLPI |
+| PC-Comptabilite | Linux Mint 22 | Comptabilité | Wazuh + GLPI |
+| PC-RH | Linux Mint 22 | RH | Wazuh + GLPI |
+| PC-Communication | Linux Mint 22 | Communication | Wazuh + GLPI |
+| PC-Info-01 | Windows 11 | Informatique | Wazuh + GLPI |
+| PC-Direction | Windows 11 | Direction | Wazuh + GLPI |
+
+---
+
 ## 📁 Partages de fichiers et cloisonnement
 
 Les données sont cloisonnées par service via des partages SMB sur le serveur, accessibles selon les groupes AD.
