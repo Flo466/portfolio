@@ -25,7 +25,7 @@
 - **5 postes** joints au domaine : 3 Linux Mint 22 + 2 Windows 11
 - **GPO** : politique de mot de passe, verrouillage, désactivation SMBv1, fond d'écran, mappage lecteurs
 - **Partages cloisonnés** par groupes AD (Finance, RH, Communication, Direction, Commun)
-- **Supervision** : Wazuh (SIEM, 8 agents) + GLPI (inventaire multi-entités)
+- **Supervision** : Wazuh (SIEM, 7 agents) + GLPI (inventaire multi-entités)
 - **Automatisation** : Ansible (déploiement de configuration Linux)
 - **Réseau** : 3 sous-réseaux libvirt, VPN Tailscale, NAT
 
@@ -38,7 +38,7 @@
 ![Dashboard Wazuh - agents actifs](./blue/wazuh-agents.png)
 
 - SIEM déployé en Docker sur le serveur
-- **8 agents** déployés sur l'ensemble du parc
+- **7 agents** déployés sur l'ensemble du parc
 - Étude de cas : **25 vulnérabilités Critical** détectées, analysées et priorisées
 - Cycle documenté : Détection → Analyse → Traitement → Vérification
 
