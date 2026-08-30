@@ -1,0 +1,15 @@
+title: Suspicious cmd.exe Spawn (Win 4688)
+id: 00000000-0000-0000-0000-000000000001
+status: experimental
+description: Detects cmd.exe spawned by risky parents in Windows process creation logs.
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4688
+    NewProcessName|endswith: '\cmd.exe'
+  condition: selection
+level: medium
+references:
+  - https://attack.mitre.org/techniques/T1059/

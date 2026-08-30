@@ -1,0 +1,2 @@
+id,asset,threat,vulnerability,impact,likelihood,risk,mitigation,status
+R-0001,Laptop,Credential theft,Weak password hygiene,High,Medium,High,MFA + policy,Open

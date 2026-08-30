@@ -1,0 +1,43 @@
+Cyber Portfolio Template
+Copyright 2025 Evan Kirstein, CISSP, CISM
+Template originally published at https://github.com/barebonescyber/template-cyber-portfolio
+
+This product includes references to, examples inspired by, or guidance aligned with third‑party projects.
+No third‑party code or content is redistributed here; links are provided for attribution and discovery.
+Trademarks belong to their respective owners.
+
+Third‑party acknowledgments (alphabetical):
+
+- MITRE ATT&CK®
+  © The MITRE Corporation. ATT&CK® and ATT&CK Evaluations are registered trademarks of The MITRE Corporation.
+  Used here as a reference for technique IDs and mappings (e.g., T1059). https://attack.mitre.org/
+
+- NIST Cybersecurity Framework (CSF) & NIST SP 800‑53
+  U.S. Government works referenced for educational/control‑mapping purposes. https://www.nist.gov/cyberframework
+  https://csrc.nist.gov/publications/sp800-53
+
+- OWASP Juice Shop
+  Referenced as a practice target in sample reporting. © OWASP Foundation. https://owasp.org/www-project-juice-shop/
+
+- PortSwigger Web Security Academy
+  Referenced for web security learning labs. © PortSwigger Ltd. https://portswigger.net/web-security
+
+- Security Onion
+  Referenced as a defensive/monitoring platform in lab guidance. © Security Onion Solutions, LLC. https://securityonionsolutions.com/
+
+- Sigma (SigmaHQ)
+  Sigma rule format and community examples are referenced. See SigmaHQ for license and details.
+  https://github.com/SigmaHQ/sigma
+
+- T‑Pot, Cowrie, Canarytokens
+  Referenced as honeypot/defensive tools for lab exploration.
+  T‑Pot: https://github.com/telekom-security/tpotce
+  Cowrie: https://github.com/cowrie/cowrie
+  Canarytokens: https://canary.tools/
+
+- TryHackMe / Hack The Box
+  Referenced as training platforms. https://tryhackme.com/ • https://www.hackthebox.com/
+
+NOTICE purpose (Apache‑2.0):
+If you redistribute derivative works that include this NOTICE, keep an equivalent attribution section.
+The contents of this NOTICE are informational and do not modify the license terms.
