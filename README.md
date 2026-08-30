@@ -16,6 +16,8 @@
 
 ### 🖧 Homelab Axone — Infrastructure d'entreprise
 
+![Schéma réseau Axone](./homelab/topology.png)
+
 **Contexte :** PME fictive "Axone" — infogérance pour collectivités. Besoin d'une infrastructure centralisée avec parc hétérogène.
 
 **Ce qui a été réalisé :**
@@ -29,11 +31,11 @@
 
 **Matériel :** Dell OptiPlex (serveur, 24 Go) · Chuwi N100 (hôte Linux, 8 Go) · Fedora Laptop (hôte Windows, 32 Go)
 
-**[Voir le schéma réseau](./homelab/topology.png)**
-
 ---
 
 ### 🛡 Supervision SIEM — Wazuh
+
+![Dashboard Wazuh - agents actifs](./blue/wazuh-agents.png)
 
 - SIEM déployé en Docker sur le serveur
 - **8 agents** déployés sur l'ensemble du parc
