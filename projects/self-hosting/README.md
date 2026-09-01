@@ -55,10 +55,9 @@ L'infrastructure n'est accessible que via un **VPN mesh Tailscale (WireGuard)**.
 - C'est ce qui rend leur usage possible depuis le téléphone : Bitwarden et les navigateurs rejettent le HTTP non chiffré, d'où le TLS via le proxy
 
 ➜  ~ tailscale status                                                   
-XX.XX.XX.XX    srv-home       F@  linux    active;                                                              
-XX.XX.XX.XX    chuwi-lab      F@  linux    offline, last seen 2d ago                                     
-XX.XX.XX.XX    fedoratitude   F@  linux    active;  
-XX.XX.XX.XX    win-serv-2022  F@  windows  offline, last seen 56m ago   
+XX.XX.XX.XX    srv-home  F@  linux    active;                                                              
+XX.XX.XX.XX    fedora    F@  linux    active;  
+XX.XX.XX.XX    Pixel9    F@  android  active;
 
 *Vue du tailnet (tailscale status)*
 
