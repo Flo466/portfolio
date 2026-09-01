@@ -11,8 +11,6 @@
 
 **Matériel** : Dell OptiPlex 3060 (i5-8500, 6 cœurs, 23 Go RAM). 3 disques séparés : système 226 Go, SSD données `/mnt/data` (220 Go), SSD backup `/mnt/backup` (457 Go).
 
-*Vue des conteneurs (docker ps)*
-
 ## 📦 Des services pour remplacer Google
 
 | Conteneur | Rôle | Accès |
@@ -26,6 +24,8 @@
 | **Portainer** | Gestion des conteneurs (Stacks) | Tailscale |
 | **Watchtower** | Mise à jour automatique des images (04h00) | interne |
 
+![Portainer - stacks docker](./portainer.png)
+
 *Vue de Portainer (stacks Docker)*
 
 ## 🗂 Stockage et sauvegardes
@@ -38,6 +38,8 @@ Sauvegardes par **restic** (chiffrées, dédupliquées, versionnées) orchestré
 
 *Note d'honnêteté : sauvegarde locale uniquement pour l'instant — pas encore de copie hors-site type B2/S3. Point d'amélioration identifié.*
 
+![Backrest](./backrest.png)
+
 *Vue de Backrest (planifications de sauvegarde)*
 
 ## 🌐 Réseau : accès distant sans exposition
@@ -48,6 +50,12 @@ L'infrastructure n'est accessible que via un **VPN mesh Tailscale (WireGuard)**.
 - **Reverse proxy HTTPS** : un reverse proxy termine le HTTPS avec un certificat Tailscale valide, ce qui permet à **Vaultwarden** et **OpenWebUI** d'être servis en HTTPS tout en restant en boucle locale (non exposés au tailnet)
 - C'est ce qui rend leur usage possible depuis le téléphone : Bitwarden et les navigateurs rejettent le HTTP non chiffré, d'où le TLS via le proxy
 
+➜  ~ tailscale status                                                   
+XX.XX.XX.XX    srv-home       F@  linux    -                                                             
+XX.XX.XX.XX    chuwi-lab      F@  linux    offline, last seen 2d ago                                     
+XX.XX.XX.XX    fedoratitude   F@  linux    active;
+XX.XX.XX.XX    win-serv-2022  F@  windows  offline, last seen 56m ago  
+  
 *Vue du tailnet (tailscale status)*
 
 ## 📱 Dé-googleïsation du mobile : GrapheneOS sur Pixel 9
