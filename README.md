@@ -14,7 +14,10 @@
 ## ⭐ Projets
 
 ### 🖧 [Homelab Axone — Infrastructure d'entreprise](./projects/axone/README.md)
-*Domaine Active Directory, parc hétérogène, GPO, supervision SIEM, gestion de parc.*
+*Domaine Active Directory, parc hétérogène, GPO, supervision SIEM, gestion de parc.*   
+
+### 🏠 [Homelab Self-hosting & dé-googleïsation](./projects/self-hosting/README.md)
+*Serveur auto-hébergé, services anti-Google, VPN chiffré Tailscale, GrapheneOS, sauvegardes restic.*
 
 ---
 
