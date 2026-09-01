@@ -13,10 +13,6 @@
 
 ## 📦 Des services pour remplacer Google
 
-![Immich](./immich.png)
-
-*Vue de Immich (web)*
-
 | Conteneur | Rôle | Accès |
 |---|---|---|
 | **Immich** | Photos & vidéos (anti Google Photos) | Tailscale |
@@ -26,11 +22,15 @@
 | **SearXNG** | Moteur de recherche auto-hébergé | interne |
 | **Backrest / restic** | Sauvegardes chiffrées et dédupliquées | Tailscale |
 | **Portainer** | Gestion des conteneurs (Stacks) | Tailscale |
-| **Watchtower** | Mise à jour automatique des images (04h00) | interne |
+| **Watchtower** | Mise à jour automatique des images (04h00) | interne |  
+
+![Immich](./immich.png)
+
+*Vue de Immich (web)*  
 
 ![Portainer - stacks docker](./portainer.png)
 
-*Vue de Portainer (stacks Docker)*
+*Vue de Portainer (stacks Docker)*  
 
 ## 🗂 Stockage et sauvegardes
 
