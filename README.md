@@ -1,7 +1,7 @@
 # Portfolio — Florent Vazeux
 
-# Administrateur d'infrastructures sécurisées (AIS)  
-**En formation · Titre professionnel en cours.**
+# Administrateur d'infrastructures sécurisées (AIS)
+En formation · Titre professionnel en cours.
 
 ---
 
@@ -14,7 +14,7 @@
 ## ⭐ Projets
 
 ### 🖧 [Homelab Axone — Infrastructure d'entreprise](./projects/axone/README.md)
-*Domaine Active Directory, parc hétérogène, GPO, supervision SIEM, gestion de parc.*   
+*Domaine Active Directory, parc hétérogène, GPO, supervision SIEM, gestion de parc.*
 
 ### 🏠 [Homelab Self-hosting & dé-googleïsation](./projects/self-hosting/README.md)
 *Serveur auto-hébergé, services anti-Google, VPN chiffré Tailscale, GrapheneOS, sauvegardes restic.*
@@ -25,12 +25,13 @@
 
 | Domaine | Technologies |
 |---|---|
-| **Systèmes** | Windows Server 2022, Windows 11, Linux (Debian, Mint), Active Directory |
-| **Réseau** | VLAN, DHCP, DNS, VPN (Tailscale), NAT, routage |
+| **Systèmes** | Windows Server 2022, Windows 11, Linux (Debian 13, Mint), Active Directory, GrapheneOS |
+| **Réseau** | VLAN, DHCP, DNS, VPN WireGuard (Tailscale), MagicDNS, reverse proxy, NAT, routage |
 | **Supervision** | Wazuh (SIEM), GLPI |
-| **Automatisation** | Ansible, scripts |
-| **Virtualisation** | KVM (libvirt), Docker |
-| **Sécurité** | GPO, moindre privilège, cloisonnement, durcissement |
+| **Automatisation** | Ansible, scripts, cron / systemd timers |
+| **Virtualisation** | KVM (libvirt), Docker, Docker Compose, stacks |
+| **Sauvegardes** | restic, Backrest |
+| **Sécurité** | GPO, moindre privilège, cloisonnement, HTTPS/TLS, durcissement |
 
 ---
 
