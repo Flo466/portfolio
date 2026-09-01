@@ -17,13 +17,13 @@
 
 | Conteneur | Rôle | Accès |
 |---|---|---|
-| **Immich** | Photos & vidéos (anti Google Photos) | Tailscale :2283 |
-| **Nextcloud** | Fichiers / Drive (anti Google Drive) | Tailscale :8080 |
-| **Vaultwarden** | Gestionnaire de mots de passe (interface Bitwarden) | HTTPS `:8443` |
-| **OpenWebUI + DeepSeek** | Assistant IA avec recherche web (SearXNG) | HTTPS `:8443` |
+| **Immich** | Photos & vidéos (anti Google Photos) | Tailscale |
+| **Nextcloud** | Fichiers / Drive (anti Google Drive) | Tailscale |
+| **Vaultwarden** | Gestionnaire de mots de passe (interface Bitwarden) | HTTPS |
+| **OpenWebUI + DeepSeek** | Assistant IA avec recherche web (SearXNG) | HTTPS |
 | **SearXNG** | Moteur de recherche auto-hébergé | interne |
-| **Backrest / restic** | Sauvegardes chiffrées et dédupliquées | Tailscale :9898 |
-| **Portainer** | Gestion des conteneurs (Stacks) | Tailscale :9443 |
+| **Backrest / restic** | Sauvegardes chiffrées et dédupliquées | Tailscale |
+| **Portainer** | Gestion des conteneurs (Stacks) | Tailscale |
 | **Watchtower** | Mise à jour automatique des images (04h00) | interne |
 
 *Vue de Portainer (stacks Docker)*
