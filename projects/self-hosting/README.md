@@ -1,4 +1,4 @@
-# 🛡️ Homelab « Autonomie » — Self-hosting & dé-googleïsation
+# 🛡️ Homelab Self-hosting & dé-googleïsation
 
 **Contexte** : Dans une logique de reprendre la main sur mes données et de réduire l'omniprésence de Google dans mon quotidien, j'ai construit ma propre infrastructure auto-hébergée, à domicile, sur du matériel que je contrôle. Photos, fichiers, mots de passe, assistant IA, sauvegardes : tout tourne chez moi et n'est accessible qu'à travers un VPN chiffré, sans exposer le moindre port sur Internet. J'ai poussé le principe jusqu'au mobile en flashent un Pixel 9 avec GrapheneOS.
 
