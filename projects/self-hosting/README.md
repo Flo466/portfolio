@@ -13,6 +13,10 @@
 
 ## 📦 Des services pour remplacer Google
 
+![Immich](./immich.png)
+
+*Vue de Immich (web)*
+
 | Conteneur | Rôle | Accès |
 |---|---|---|
 | **Immich** | Photos & vidéos (anti Google Photos) | Tailscale |
@@ -66,8 +70,6 @@ Le Pixel 9 a été flashé avec **GrapheneOS**, un Android libre et durci, sans 
 - **Sandboxing renforcé** : les services Google éventuels tournent comme de simples applications, sans privilèges système, cloisonnés
 - **Durcissement système** : démarrage vérifié (verified boot), permissions très granulaires, protections mémoire renforcées
 - **Autonomie** : pas de compte Google, fonctionnement indépendant
-
-*Écran GrapheneOS sur le Pixel 9*
 
 ## 🛡 Sécurité
 
