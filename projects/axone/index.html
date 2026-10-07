@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🖧 Homelab Axone — Infrastructure d'entreprise</title>
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Florent Vazeux &middot; Administrateur d'infrastructures sécurisées</p>
+    <h1>🖧 Homelab Axone — Infrastructure d'entreprise</h1>
+    <p class="stamp">10/2026</p>
+  </div>
+</header>
+<main class="wrap">
+<a class="back" href="../../../index.html">&larr; Portfolio</a>
+<article>
+<p><strong>Contexte :</strong> PME fictive “Axone” — infogérance pour
+collectivités. Besoin d’une infrastructure centralisée avec parc
+hétérogène.</p>
+<p><strong>Ce qui a été réalisé :</strong> - Domaine <strong>Active
+Directory</strong> <code>serv-net.lan</code> (Windows Server 2022) — AD,
+DNS, DHCP - <strong>5 postes</strong> joints au domaine : 3 Linux Mint
+22 + 2 Windows 11 - <strong>GPO</strong> : politique de mot de passe,
+verrouillage, désactivation SMBv1, fond d’écran, mappage lecteurs -
+<strong>Partages cloisonnés</strong> par groupes AD (Finance, RH,
+Communication, Direction, Commun) - <strong>Supervision</strong> : Wazuh
+(SIEM, 7 agents) + GLPI (inventaire multi-entités) -
+<strong>Automatisation</strong> : Ansible (déploiement de configuration
+Linux) - <strong>Réseau</strong> : 3 sous-réseaux libvirt, VPN
+Tailscale, NAT</p>
+<p><strong>Matériel :</strong> Dell OptiPlex (serveur, 24 Go) · Chuwi
+N100 (hôte Linux, 8 Go) · Fedora Laptop (hôte Windows, 32 Go)</p>
+<p><img src="./gestionnaire-vm.png" alt="Libvirt - VM" /> <em>Vue des
+VM’s depuis le Gestionnaire Linux</em></p>
+<hr />
+<h2 id="réseau-et-accès-distant-multi-sites">🌐 Réseau et accès distant
+multi-sites</h2>
+<p>L’infrastructure est répartie sur 3 sites (domicile dirigeant, open
+space, télétravail), interconnectés via un VPN mesh
+<strong>Tailscale</strong>.</p>
+<p><strong>Architecture réseau :</strong></p>
+<ul>
+<li><strong>Réseau LAN</strong> : <code>192.168.1.0/24</code> — Dell et
+Chuwi (réseau domestique)</li>
+<li><strong>Sous-réseaux libvirt isolés</strong> :
+<ul>
+<li>Dell : <code>192.168.122.0/24</code> (contient SRV-AD, le contrôleur
+de domaine)</li>
+<li>Chuwi : <code>192.168.124.0/24</code> (contient les 3 postes Linux
+Mint)</li>
+<li>Fedora : <code>192.168.123.0/24</code> (contient les 2 postes
+Windows 11)</li>
+</ul></li>
+<li><strong>VPN mesh Tailscale</strong> : accès distant chiffré entre
+les sites, sans exposer de ports sur Internet</li>
+<li><strong>Subnet routing</strong> : le serveur Dell expose son réseau
+libvirt (192.168.122.0/24) via Tailscale pour que les postes distants
+joignent le contrôleur de domaine</li>
+</ul>
+<p><strong>Pourquoi cette architecture ?</strong></p>
+<p>Le serveur étant hébergé au domicile du dirigeant (pas de local
+technique), les postes de l’open space et du télétravail doivent accéder
+au contrôleur de domaine à distance. Tailscale permet un VPN sécurisé
+sans configuration de la box (pas d’IP fixe, pas d’ouverture de
+ports).</p>
+<figure>
+<img src="./topology.png" alt="Schéma réseau Axone" />
+<figcaption aria-hidden="true">Schéma réseau Axone</figcaption>
+</figure>
+<hr />
+<h2 id="vue-densemble-du-parc">📊 Vue d’ensemble du parc</h2>
+<table>
+<thead>
+<tr>
+<th>Machine</th>
+<th>OS</th>
+<th>Rôle</th>
+<th>Supervision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRV-AD</td>
+<td>Windows Server 2022</td>
+<td>AD, DNS, DHCP</td>
+<td>Wazuh + GLPI</td>
+</tr>
+<tr>
+<td>PC-Comptabilite</td>
+<td>Linux Mint 22</td>
+<td>Comptabilité</td>
+<td>Wazuh + GLPI</td>
+</tr>
+<tr>
+<td>PC-RH</td>
+<td>Linux Mint 22</td>
+<td>RH</td>
+<td>Wazuh + GLPI</td>
+</tr>
+<tr>
+<td>PC-Communication</td>
+<td>Linux Mint 22</td>
+<td>Communication</td>
+<td>Wazuh + GLPI</td>
+</tr>
+<tr>
+<td>PC-Info-01</td>
+<td>Windows 11</td>
+<td>Informatique</td>
+<td>Wazuh + GLPI</td>
+</tr>
+<tr>
+<td>PC-Direction</td>
+<td>Windows 11</td>
+<td>Direction</td>
+<td>Wazuh + GLPI</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="active-directory-structure-et-stratégies">🗂 Active Directory —
+structure et stratégies</h2>
+<p><strong>Unités d’organisation :</strong> chaque service a son OU
+dédiée (Comptabilité, RH, Direction, Communication, Informatique,
+Serveurs) pour appliquer des stratégies différenciées.</p>
+<figure>
+<img src="./ad-users.png" alt="Structure des OU" />
+<figcaption aria-hidden="true">Structure des OU</figcaption>
+</figure>
+<p><strong>Stratégies de groupe (GPO) :</strong></p>
+<table>
+<thead>
+<tr>
+<th>GPO</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPO-Password</td>
+<td>Mot de passe 12 car., complexité, expiration 90j</td>
+</tr>
+<tr>
+<td>GPO-Lockout</td>
+<td>Verrouillage après 5 tentatives</td>
+</tr>
+<tr>
+<td>GPO-SMBv1</td>
+<td>Désactivation SMBv1</td>
+</tr>
+<tr>
+<td>GPO-Wallpaper</td>
+<td>Fond d’écran Axone</td>
+</tr>
+<tr>
+<td>GPO-DriveMapping</td>
+<td>Mappage lecteurs réseau</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img src="./gpo-list.png" alt="Liste des GPO" />
+<figcaption aria-hidden="true">Liste des GPO</figcaption>
+</figure>
+<p><strong>Accès distant admin (RDP) :</strong></p>
+<figure>
+<img src="./rdp-admin.png" alt="Accès distant - Bureau à distance" />
+<figcaption aria-hidden="true">Accès distant - Bureau à
+distance</figcaption>
+</figure>
+<hr />
+<h2 id="partages-de-fichiers-et-cloisonnement">📁 Partages de fichiers
+et cloisonnement</h2>
+<p>Les données sont cloisonnées par service via des partages SMB sur le
+serveur, accessibles selon les groupes AD.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Partage</th>
+<th>Accès (groupes AD)</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Finance</code></td>
+<td>grp_compta, grp_direction</td>
+<td>Données comptables</td>
+</tr>
+<tr>
+<td><code>RH</code></td>
+<td>grp_rh, grp_direction</td>
+<td>Données RH (paie, contrats)</td>
+</tr>
+<tr>
+<td><code>Communication</code></td>
+<td>grp_communication, grp_direction</td>
+<td>Communication interne</td>
+</tr>
+<tr>
+<td><code>Commun</code></td>
+<td>Utilisateurs du domaine</td>
+<td>Documents partagés</td>
+</tr>
+<tr>
+<td><code>Direction</code></td>
+<td>grp_direction</td>
+<td>Direction</td>
+</tr>
+</tbody>
+</table>
+<p><img src="./partages-win11.png"
+alt="Partages Windows - lecteurs mappés" /> <em>Vue des lecteurs réseau
+mappés sur le poste Direction Windows 11 avec accès total</em></p>
+<p><img src="./partages-linux.png"
+alt="Partages Linux - montage CIFS" /> <em>Vue des partages montés sur
+un poste Linux Mint (dossiers dans le réseau)</em></p>
+<hr />
+<h2 id="supervision-siem-wazuh">🛡 Supervision SIEM — Wazuh</h2>
+<figure>
+<img src="./wazuh-agents.png" alt="Dashboard Wazuh - agents actifs" />
+<figcaption aria-hidden="true">Dashboard Wazuh - agents
+actifs</figcaption>
+</figure>
+<ul>
+<li>SIEM déployé en Docker sur le serveur</li>
+<li><strong>7 agents</strong> déployés sur l’ensemble du parc</li>
+<li>Étude de cas : <strong>25 vulnérabilités Critical</strong>
+détectées, analysées et priorisées</li>
+<li>Cycle documenté : Détection → Analyse → Traitement →
+Vérification</li>
+</ul>
+<hr />
+<h2 id="gestion-de-parc-glpi">📋 Gestion de parc — GLPI</h2>
+<ul>
+<li>Inventaire automatisé des postes (glpi-agent déployé via
+Ansible)</li>
+<li>Entité dédiée “Axone” pour cloisonner le parc</li>
+<li>Administrateur délégué (droits limités à l’entité)</li>
+</ul>
+<hr />
+<h2 id="automatisation-ansible">⚙️ Automatisation — Ansible</h2>
+<p>Gestion centralisée de la configuration des postes Linux Mint via
+Ansible (depuis le Chuwi, controller).</p>
+<table>
+<thead>
+<tr>
+<th>Playbook</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wallpaper.yml</code></td>
+<td>Déploiement du fond d’écran Axone</td>
+</tr>
+<tr>
+<td><code>wazuh-agent.yml</code></td>
+<td>Déploiement des agents SIEM</td>
+</tr>
+<tr>
+<td><code>maj-auto.yml</code></td>
+<td>MAJ de sécurité automatiques au boot</td>
+</tr>
+<tr>
+<td><code>glpi-agent.yml</code></td>
+<td>Déploiement des agents d’inventaire GLPI</td>
+</tr>
+<tr>
+<td><code>dns-fix.yml</code></td>
+<td>Correctif de résolution DNS</td>
+</tr>
+</tbody>
+</table>
+<p><em>Ansible est l’équivalent des GPO pour le parc Linux : déploiement
+centralisé, reproductible, versionné.</em></p>
+<hr />
+<h2 id="mises-à-jour-automatiques">🔄 Mises à jour automatiques</h2>
+<p>Chaque machine applique les mises à jour de sécurité automatiquement,
+avec traçabilité :</p>
+<table>
+<thead>
+<tr>
+<th>Machine</th>
+<th>Méthode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dell</td>
+<td><code>unattended-upgrades</code> (sécurité), timer 01:00</td>
+</tr>
+<tr>
+<td>Chuwi</td>
+<td>Service systemd au boot</td>
+</tr>
+<tr>
+<td>3 Mint</td>
+<td>Service systemd au boot (déployé via Ansible)</td>
+</tr>
+</tbody>
+</table>
+<p><em>Les logs de MAJ sont tracés dans
+<code>/var/log/maj-auto.log</code>.</em></p>
+<hr />
+</article>
+</main>
+<footer><div class="wrap"><p>Florent Vazeux &middot; 10/2026</p></div></footer>
+</body>
+</html>

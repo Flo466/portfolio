@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Florent Vazeux — Administrateur d'infrastructures sécurisées</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap-wide">
+    <p class="eyebrow">GRETA 91 &middot; Titre professionnel AIS en cours</p>
+    <h1>Infrastructures systèmes, réseau et sécurité</h1>
+    <p class="lede">Des infrastructures montées de bout en bout, documentées et reproductibles : Active Directory, supervision, automatisation, auto-hébergement, sauvegardes.</p>
+    <div class="contact">
+      <a href="https://www.linkedin.com/in/flo-vz04/">LinkedIn</a>
+      <a href="mailto:florentbv@outlook.fr">florentbv@outlook.fr</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap-wide">
+
+<h2 class="sec-title">Projets</h2>
+
+<div class="grid">
+
+  <a class="card card--main" href="projects/axone/">
+    <span class="no">01 &nbsp;/&nbsp; INFRASTRUCTURE D'ENTREPRISE</span>
+    <h3>Homelab Axone — domaine Active Directory et parc hétérogène</h3>
+    <p>Une PME fictive avec son contrôleur de domaine, cinq postes joints, des stratégies de groupe, des partages cloisonnés par service, une supervision SIEM et un inventaire de parc. Le tout réparti sur trois sites reliés par VPN mesh.</p>
+    <div class="pills">
+      <span class="pill">Windows Server 2022</span>
+      <span class="pill">Active Directory</span>
+      <span class="pill">GPO</span>
+      <span class="pill">Wazuh</span>
+      <span class="pill">GLPI</span>
+      <span class="pill">Tailscale</span>
+    </div>
+    <span class="foot">Voir le projet &nbsp;&rarr;</span>
+  </a>
+
+  <a class="card" href="projects/self-hosting/">
+    <span class="no">02 &nbsp;/&nbsp; AUTO-HÉBERGEMENT</span>
+    <h3>Homelab Self-hosting &amp; dé-googleïsation</h3>
+    <p>Une quinzaine de services auto-hébergés en conteneurs, accessibles uniquement par VPN chiffré, sans un seul port ouvert sur Internet. Sauvegardes chiffrées et dédupliquées, jusqu'au téléphone sous GrapheneOS.</p>
+    <div class="pills">
+      <span class="pill">Debian 13</span>
+      <span class="pill">Docker</span>
+      <span class="pill">Immich</span>
+      <span class="pill">Nextcloud</span>
+      <span class="pill">restic</span>
+      <span class="pill">GrapheneOS</span>
+    </div>
+    <span class="foot">Voir le projet &nbsp;&rarr;</span>
+  </a>
+
+</div>
+
+<h2 class="sec-title">Projets en préparation</h2>
+
+<div class="grid">
+  <div class="card card--soon">
+    <span class="no">03 &nbsp;/&nbsp; DÉTECTION</span>
+    <h3>Règles de détection et chasse aux menaces</h3>
+    <p>Écriture de règles et démarche de recherche d'anomalies dans les journaux.</p>
+    <span class="foot">À venir <span class="badge">en préparation</span></span>
+  </div>
+  <div class="card card--soon">
+    <span class="no">04 &nbsp;/&nbsp; GOUVERNANCE</span>
+    <h3>Politiques, analyse de risques et référentiels</h3>
+    <p>Politiques de sécurité, cartographie des risques et correspondance avec les référentiels.</p>
+    <span class="foot">À venir <span class="badge">en préparation</span></span>
+  </div>
+</div>
+
+<article>
+<h2>Compétences</h2>
+<table>
+<thead><tr><th>Domaine</th><th>Technologies</th></tr></thead>
+<tbody>
+<tr><td><strong>Systèmes</strong></td><td>Windows Server 2022, Windows 11, Linux (Debian 13, Mint), Active Directory, GrapheneOS</td></tr>
+<tr><td><strong>Réseau</strong></td><td>VLAN, DHCP, DNS, VPN WireGuard (Tailscale), MagicDNS, reverse proxy, NAT, routage</td></tr>
+<tr><td><strong>Supervision</strong></td><td>Wazuh (SIEM), GLPI</td></tr>
+<tr><td><strong>Automatisation</strong></td><td>Ansible, scripts, cron / systemd timers, Proxmox VE, cloud-init</td></tr>
+<tr><td><strong>Virtualisation</strong></td><td>KVM (libvirt), Docker, Docker Compose, stacks</td></tr>
+<tr><td><strong>Sauvegardes</strong></td><td>restic, Backrest</td></tr>
+<tr><td><strong>Sécurité</strong></td><td>GPO, moindre privilège, cloisonnement, HTTPS/TLS, durcissement</td></tr>
+</tbody>
+</table>
+
+<h2>Comment ces projets sont documentés</h2>
+<p>Chaque projet est décrit de la même façon : le contexte, ce qui a été réalisé, les choix techniques et leurs raisons, puis les points d'amélioration identifiés. Les captures d'écran servent de preuve, et les scripts de déploiement sont versionnés.</p>
+<p>Une attention particulière est portée à ce qui ne fonctionne pas encore. Une limite assumée et écrite vaut mieux qu'un projet présenté comme parfait.</p>
+</article>
+
+</main>
+<footer><div class="wrap-wide"><p>Florent Vazeux &middot; Administrateur d'infrastructures sécurisées</p></div></footer>
+</body>
+</html>

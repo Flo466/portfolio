@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🛡️ Homelab Self-hosting &amp; dé-googleïsation</title>
+<link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">Florent Vazeux &middot; Administrateur d'infrastructures sécurisées</p>
+    <h1>🛡️ Homelab Self-hosting &amp; dé-googleïsation</h1>
+    <p class="stamp">10/2026</p>
+  </div>
+</header>
+<main class="wrap">
+<a class="back" href="../../../index.html">&larr; Portfolio</a>
+<article>
+<p><strong>Contexte</strong> : Dans une logique de reprendre la main sur
+mes données et de réduire l’omniprésence de Google dans mon quotidien,
+j’ai construit ma propre infrastructure auto-hébergée, à domicile, sur
+du matériel que je contrôle. Photos, fichiers, mots de passe, assistant
+IA, sauvegardes : tout tourne chez moi et n’est accessible qu’à travers
+un VPN chiffré, sans exposer le moindre port sur Internet. J’ai poussé
+le principe jusqu’au mobile en flashent un Pixel 9 avec GrapheneOS.</p>
+<p><strong>Ce qui a été réalisé</strong> : - Serveur <strong>Debian 13
+(trixie)</strong> auto-hébergé, <strong>zéro port ouvert sur
+Internet</strong> — tout passe par le tailnet - <strong>Une quinzaine de
+conteneurs Docker</strong> en stacks compose organisées dans
+<code>/apps/</code> (Immich, Nextcloud, Vaultwarden, OpenWebUI, SearXNG,
+Backrest, Portainer, Watchtower) - Services anti-Google :
+<strong>Immich</strong> (photos), <strong>Nextcloud</strong> (Drive),
+<strong>Vaultwarden</strong> (mots de passe), <strong>SearXNG</strong>
+(recherche web), <strong>OpenWebUI + API DeepSeek</strong> (assistant
+IA) - <strong>Accès distant chiffré</strong> (WireGuard) via Tailscale +
+MagicDNS, depuis Pixel/PC/n’importe où - <strong>Dé-googleïsation
+mobile</strong> : Pixel 9 → <strong>GrapheneOS</strong></p>
+<p><strong>Matériel</strong> : Dell OptiPlex 3060 (i5-8500, 6 cœurs, 23
+Go RAM). 3 disques séparés : système 226 Go, SSD données
+<code>/mnt/data</code> (220 Go), SSD backup <code>/mnt/backup</code>
+(457 Go).</p>
+<h2 id="des-services-pour-remplacer-google">📦 Des services pour
+remplacer Google</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Conteneur</th>
+<th>Rôle</th>
+<th>Accès</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Immich</strong></td>
+<td>Photos &amp; vidéos (anti Google Photos)</td>
+<td>Tailscale</td>
+</tr>
+<tr>
+<td><strong>Nextcloud</strong></td>
+<td>Fichiers / Drive (anti Google Drive)</td>
+<td>Tailscale</td>
+</tr>
+<tr>
+<td><strong>Vaultwarden</strong></td>
+<td>Gestionnaire de mots de passe (interface Bitwarden)</td>
+<td>HTTPS</td>
+</tr>
+<tr>
+<td><strong>OpenWebUI + DeepSeek</strong></td>
+<td>Assistant IA avec recherche web (SearXNG)</td>
+<td>HTTPS</td>
+</tr>
+<tr>
+<td><strong>SearXNG</strong></td>
+<td>Moteur de recherche auto-hébergé</td>
+<td>interne</td>
+</tr>
+<tr>
+<td><strong>Backrest / restic</strong></td>
+<td>Sauvegardes chiffrées et dédupliquées</td>
+<td>Tailscale</td>
+</tr>
+<tr>
+<td><strong>Portainer</strong></td>
+<td>Gestion des conteneurs (Stacks)</td>
+<td>Tailscale</td>
+</tr>
+<tr>
+<td><strong>Watchtower</strong></td>
+<td>Mise à jour automatique des images (04h00)</td>
+<td>interne</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img src="./immich.png" alt="Immich" />
+<figcaption aria-hidden="true">Immich</figcaption>
+</figure>
+<p><em>Vue de Immich (web)</em></p>
+<figure>
+<img src="./portainer.png" alt="Portainer - stacks docker" />
+<figcaption aria-hidden="true">Portainer - stacks docker</figcaption>
+</figure>
+<p><em>Vue de Portainer (stacks Docker)</em></p>
+<h2 id="stockage-et-sauvegardes">🗂 Stockage et sauvegardes</h2>
+<ul>
+<li>Système : <code>/dev/sda</code> (226 Go)</li>
+<li>Données applicatives (Immich, Nextcloud) : <code>/dev/sdb</code> →
+<code>/mnt/data</code> (220 Go)</li>
+<li>Sauvegardes : <code>/dev/sdc</code> → <code>/mnt/backup</code> (457
+Go)</li>
+</ul>
+<p>Sauvegardes par <strong>restic</strong> (chiffrées, dédupliquées,
+versionnées) orchestrées par <strong>Backrest</strong> vers le SSD
+<code>/mnt/backup</code>. Elles couvrent les données Immich, Nextcloud
+et les configurations des conteneurs.</p>
+<p><em>Note d’honnêteté : sauvegarde locale uniquement pour l’instant —
+pas encore de copie hors-site type B2/S3. Point d’amélioration
+identifié.</em></p>
+<figure>
+<img src="./backrest.png" alt="Backrest" />
+<figcaption aria-hidden="true">Backrest</figcaption>
+</figure>
+<p><em>Vue de Backrest (planifications de sauvegarde)</em></p>
+<h2 id="réseau-accès-distant-sans-exposition">🌐 Réseau : accès distant
+sans exposition</h2>
+<p>L’infrastructure n’est accessible que via un <strong>VPN mesh
+Tailscale (WireGuard)</strong>. Aucun port redirigé sur la box, aucune
+IP fixe, aucune exposition publique.</p>
+<ul>
+<li><strong>MagicDNS</strong> (<code>CorpDNS</code>) : résolution
+interne par nom</li>
+<li><strong>Reverse proxy HTTPS</strong> : un reverse proxy termine le
+HTTPS avec un certificat Tailscale valide, ce qui permet à
+<strong>Vaultwarden</strong> et <strong>OpenWebUI</strong> d’être servis
+en HTTPS tout en restant en boucle locale (non exposés au tailnet)</li>
+<li>C’est ce qui rend leur usage possible depuis le téléphone :
+Bitwarden et les navigateurs rejettent le HTTP non chiffré, d’où le TLS
+via le proxy</li>
+</ul>
+<p>➜ ~ tailscale status<br />
+XX.XX.XX.XX srv-home F@ linux active;<br />
+XX.XX.XX.XX fedora F@ linux active;<br />
+XX.XX.XX.XX Pixel9 F@ android active;</p>
+<p><em>Vue du tailnet (tailscale status)</em></p>
+<h2 id="dé-googleïsation-du-mobile-grapheneos-sur-pixel-9">📱
+Dé-googleïsation du mobile : GrapheneOS sur Pixel 9</h2>
+<p>Le Pixel 9 a été flashé avec <strong>GrapheneOS</strong>, un Android
+libre et durci, sans les services Google préinstallés.</p>
+<ul>
+<li><strong>Pas de Google Play Services</strong> : moins de télémétrie
+et de collecte</li>
+<li><strong>Sandboxing renforcé</strong> : les services Google éventuels
+tournent comme de simples applications, sans privilèges système,
+cloisonnés</li>
+<li><strong>Durcissement système</strong> : démarrage vérifié (verified
+boot), permissions très granulaires, protections mémoire renforcées</li>
+<li><strong>Autonomie</strong> : pas de compte Google, fonctionnement
+indépendant</li>
+</ul>
+<h2 id="sécurité">🛡 Sécurité</h2>
+<table>
+<thead>
+<tr>
+<th>Mesure</th>
+<th>État</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VPN WireGuard mesh, zéro port-forward</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>MagicDNS</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>SSH durci : port non standard,
+<code>PasswordAuthentication no</code></td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Reverse proxy HTTPS (certificat MagicDNS)</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Services sensibles en loopback (Vaultwarden, OpenWebUI)</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+</article>
+</main>
+<footer><div class="wrap"><p>Florent Vazeux &middot; 10/2026</p></div></footer>
+</body>
+</html>
