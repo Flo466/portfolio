@@ -11,7 +11,7 @@
   <div class="wrap-wide">
     <p class="eyebrow">GRETA 91 &middot; Titre professionnel AIS en cours</p>
     <h1>Infrastructures systèmes, réseau et sécurité</h1>
-    <p class="lede">Des infrastructures montées de bout en bout, documentées et reproductibles : Active Directory, supervision, automatisation, auto-hébergement, sauvegardes.</p>
+    <p class="lede">Des infrastructures montées de bout en bout, documentées et reproductibles : automatisation, virtualisation, supervision, auto-hébergement, sauvegardes.</p>
     <div class="contact">
       <a href="https://www.linkedin.com/in/flo-vz04/">LinkedIn</a>
       <a href="mailto:florentbv@outlook.fr">florentbv@outlook.fr</a>
@@ -21,42 +21,27 @@
 
 <main class="wrap-wide">
 
-<h2 class="sec-title">Projets</h2>
+<h2 class="sec-title">Projet</h2>
 
 <div class="grid">
 
-  <a class="card card--main" href="projects/axone/">
-    <span class="no">01 &nbsp;/&nbsp; INFRASTRUCTURE D'ENTREPRISE</span>
-    <h3>Homelab Axone — domaine Active Directory et parc hétérogène</h3>
-    <p>Une PME fictive avec son contrôleur de domaine, cinq postes joints, des stratégies de groupe, des partages cloisonnés par service, une supervision SIEM et un inventaire de parc. Le tout réparti sur trois sites reliés par VPN mesh.</p>
+  <a class="card" href="https://flo466.github.io/Full-Project-Ansible/"
+     target="_blank" rel="noopener">
+    <span class="no">01 &nbsp;/&nbsp; INFRASTRUCTURE AS CODE</span>
+    <h3>Automatisation d'une infrastructure multiservice avec Ansible</h3>
+    <p>Cinq serveurs Debian déployés, configurés et exploités par Ansible sur Proxmox&nbsp;VE. Le socle est préparé une seule fois à partir d'une image système puis cloné, la configuration de chaque machine est injectée automatiquement au démarrage, et l'état attendu est décrit dans des rôles reproductibles.</p>
     <div class="pills">
-      <span class="pill">Windows Server 2022</span>
-      <span class="pill">Active Directory</span>
-      <span class="pill">GPO</span>
-      <span class="pill">Wazuh</span>
-      <span class="pill">GLPI</span>
-      <span class="pill">Tailscale</span>
-    </div>
-    <span class="foot">Voir le projet &nbsp;&rarr;</span>
-  </a>
-
-  <a class="card" href="projects/self-hosting/">
-    <span class="no">02 &nbsp;/&nbsp; AUTO-HÉBERGEMENT</span>
-    <h3>Homelab Self-hosting &amp; dé-googleïsation</h3>
-    <p>Une quinzaine de services auto-hébergés en conteneurs, accessibles uniquement par VPN chiffré, sans un seul port ouvert sur Internet. Sauvegardes chiffrées et dédupliquées, jusqu'au téléphone sous GrapheneOS.</p>
-    <div class="pills">
+      <span class="pill">Ansible</span>
+      <span class="pill">Proxmox VE</span>
+      <span class="pill">cloud-init</span>
       <span class="pill">Debian 13</span>
-      <span class="pill">Docker</span>
-      <span class="pill">Immich</span>
-      <span class="pill">Nextcloud</span>
-      <span class="pill">restic</span>
-      <span class="pill">GrapheneOS</span>
+      <span class="pill">rôles</span>
+      <span class="pill">idempotence</span>
     </div>
-    <span class="foot">Voir le projet &nbsp;&rarr;</span>
+    <span class="foot">Consulter le projet &nbsp;&nearr;</span>
   </a>
 
 </div>
-
 
 <article>
 <h2>Compétences</h2>
@@ -64,18 +49,18 @@
 <thead><tr><th>Domaine</th><th>Technologies</th></tr></thead>
 <tbody>
 <tr><td><strong>Systèmes</strong></td><td>Windows Server 2022, Windows 11, Linux (Debian 13, Mint), Active Directory, GrapheneOS</td></tr>
-<tr><td><strong>Réseau</strong></td><td>VLAN, DHCP, DNS, VPN WireGuard (Tailscale), MagicDNS, reverse proxy, NAT, routage</td></tr>
+<tr><td><strong>Réseau</strong></td><td>VLAN, DHCP, DNS, NAT, routage, reverse proxy, VPN WireGuard (Tailscale), MagicDNS</td></tr>
+<tr><td><strong>Automatisation</strong></td><td>Ansible, rôles et playbooks, Jinja2, cloud-init, scripts, cron / systemd timers</td></tr>
+<tr><td><strong>Virtualisation</strong></td><td>Proxmox VE, KVM (libvirt), Docker, Docker Compose, stacks</td></tr>
 <tr><td><strong>Supervision</strong></td><td>Wazuh (SIEM), GLPI</td></tr>
-<tr><td><strong>Automatisation</strong></td><td>Ansible, scripts, cron / systemd timers, Proxmox VE, cloud-init</td></tr>
-<tr><td><strong>Virtualisation</strong></td><td>KVM (libvirt), Docker, Docker Compose, stacks</td></tr>
 <tr><td><strong>Sauvegardes</strong></td><td>restic, Backrest</td></tr>
 <tr><td><strong>Sécurité</strong></td><td>GPO, moindre privilège, cloisonnement, HTTPS/TLS, durcissement</td></tr>
 </tbody>
 </table>
 
-<h2>Comment ces projets sont documentés</h2>
-<p>Chaque projet est décrit de la même façon : le contexte, ce qui a été réalisé, les choix techniques et leurs raisons, puis les points d'amélioration identifiés. Les captures d'écran servent de preuve, et les scripts de déploiement sont versionnés.</p>
-<p>Une attention particulière est portée à ce qui ne fonctionne pas encore. Une limite assumée et écrite vaut mieux qu'un projet présenté comme parfait.</p>
+<h2>Comment ce projet est documenté</h2>
+<p>Le contexte, la démarche, les choix techniques et leurs raisons, puis les points de vigilance identifiés avec la mesure appliquée. Les scripts de déploiement sont versionnés et rejouables, et la documentation est générée à partir de sa source pour rester à jour.</p>
+<p>Une attention particulière est portée à ce qui ne fonctionne pas encore du premier coup. Une limite assumée et écrite vaut mieux qu'un projet présenté comme parfait.</p>
 </article>
 
 </main>
