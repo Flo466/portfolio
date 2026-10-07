@@ -17,6 +17,7 @@ Les projets sont documentés de la même façon : le contexte, la démarche, les
 | Projet | Domaine | Technologies | Lien |
 |---|---|---|---|
 | **Automatisation d'une infrastructure multiservice avec Ansible** | Infrastructure as Code | Ansible, Proxmox VE, cloud-init, Debian 13 | [Consulter](https://flo466.github.io/Full-Project-Ansible/) |
+| **Cluster Proxmox VE et recette de bascule** | Haute disponibilité | Proxmox VE, cluster, quorum, ZFS, réplication | [Consulter](https://flo466.github.io/santelia-iac/) |
 
 *Chaque nouveau chantier ajoute une ligne à ce tableau.*
 

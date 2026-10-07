@@ -8,10 +8,10 @@
 </head>
 <body>
 <header class="masthead">
-  <div class="wrap-wide">
+  <div class="wrap">
     <p class="eyebrow">GRETA 91 &middot; Titre professionnel AIS en cours</p>
     <h1>Infrastructures systèmes, réseau et sécurité</h1>
-    <p class="lede">Des infrastructures montées de bout en bout, documentées et reproductibles : automatisation, virtualisation, supervision, auto-hébergement, sauvegardes.</p>
+    <p class="lede">Des infrastructures montées de bout en bout, documentées et reproductibles&nbsp;: automatisation, virtualisation, haute disponibilité, supervision, auto-hébergement.</p>
     <div class="contact">
       <a href="https://www.linkedin.com/in/flo-vz04/">LinkedIn</a>
       <a href="mailto:florentbv@outlook.fr">florentbv@outlook.fr</a>
@@ -19,9 +19,9 @@
   </div>
 </header>
 
-<main class="wrap-wide">
+<main class="wrap">
 
-<h2 class="sec-title">Projet</h2>
+<h2 class="sec-title">Projets</h2>
 
 <div class="grid">
 
@@ -34,9 +34,23 @@
       <span class="pill">Ansible</span>
       <span class="pill">Proxmox VE</span>
       <span class="pill">cloud-init</span>
-      <span class="pill">Debian 13</span>
       <span class="pill">rôles</span>
       <span class="pill">idempotence</span>
+    </div>
+    <span class="foot">Consulter le projet &nbsp;&nearr;</span>
+  </a>
+
+  <a class="card" href="https://flo466.github.io/santelia-iac/"
+     target="_blank" rel="noopener">
+    <span class="no">02 &nbsp;/&nbsp; HAUTE DISPONIBILITÉ</span>
+    <h3>Cluster Proxmox VE et recette de bascule</h3>
+    <p>Trois nœuds Proxmox en cluster, quorum tenu à deux votes sur trois, réplication des volumes entre nœuds et groupe de haute disponibilité. La continuité est démontrée par la panne&nbsp;: un nœud est coupé, la reprise est chronométrée et le quorum reste tenu pendant l'incident.</p>
+    <div class="pills">
+      <span class="pill">Proxmox VE</span>
+      <span class="pill">cluster</span>
+      <span class="pill">quorum</span>
+      <span class="pill">ZFS</span>
+      <span class="pill">recette</span>
     </div>
     <span class="foot">Consulter le projet &nbsp;&nearr;</span>
   </a>
@@ -49,21 +63,22 @@
 <thead><tr><th>Domaine</th><th>Technologies</th></tr></thead>
 <tbody>
 <tr><td><strong>Systèmes</strong></td><td>Windows Server 2022, Windows 11, Linux (Debian 13, Mint), Active Directory, GrapheneOS</td></tr>
-<tr><td><strong>Réseau</strong></td><td>VLAN, DHCP, DNS, NAT, routage, reverse proxy, VPN WireGuard (Tailscale), MagicDNS</td></tr>
-<tr><td><strong>Automatisation</strong></td><td>Ansible, rôles et playbooks, Jinja2, cloud-init, scripts, cron / systemd timers</td></tr>
-<tr><td><strong>Virtualisation</strong></td><td>Proxmox VE, KVM (libvirt), Docker, Docker Compose, stacks</td></tr>
+<tr><td><strong>Réseau</strong></td><td>VLAN, DHCP, DNS, NAT, routage, ponts internes, réseau isolé avec NAT, reverse proxy, VPN WireGuard (Tailscale), MagicDNS</td></tr>
+<tr><td><strong>Automatisation</strong></td><td>Ansible (inventaire, rôles, playbooks, variables, Jinja2, handlers, idempotence), cloud-init, scripts, cron / systemd timers</td></tr>
+<tr><td><strong>Virtualisation</strong></td><td>Proxmox VE (VM, template cloud-init, clone lié, cluster, quorum, HA, réplication ZFS), KVM (libvirt), LXC, Docker, Docker Compose</td></tr>
+<tr><td><strong>Serveurs &amp; services</strong></td><td>Apache, PHP, MariaDB, PostgreSQL</td></tr>
 <tr><td><strong>Supervision</strong></td><td>Wazuh (SIEM), GLPI</td></tr>
-<tr><td><strong>Sauvegardes</strong></td><td>restic, Backrest</td></tr>
-<tr><td><strong>Sécurité</strong></td><td>GPO, moindre privilège, cloisonnement, HTTPS/TLS, durcissement</td></tr>
+<tr><td><strong>Sauvegardes</strong></td><td>restic, Backrest, instantanés et clonage</td></tr>
+<tr><td><strong>Sécurité</strong></td><td>GPO, moindre privilège, cloisonnement, durcissement SSH, HTTPS/TLS</td></tr>
 </tbody>
 </table>
 
-<h2>Comment ce projet est documenté</h2>
+<h2>Comment ces projets sont documentés</h2>
 <p>Le contexte, la démarche, les choix techniques et leurs raisons, puis les points de vigilance identifiés avec la mesure appliquée. Les scripts de déploiement sont versionnés et rejouables, et la documentation est générée à partir de sa source pour rester à jour.</p>
 <p>Une attention particulière est portée à ce qui ne fonctionne pas encore du premier coup. Une limite assumée et écrite vaut mieux qu'un projet présenté comme parfait.</p>
 </article>
 
 </main>
-<footer><div class="wrap-wide"><p>Florent Vazeux &middot; Administrateur d'infrastructures sécurisées</p></div></footer>
+<footer><div class="wrap"><p>Florent Vazeux &middot; Administrateur d'infrastructures sécurisées</p></div></footer>
 </body>
 </html>
