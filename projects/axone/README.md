@@ -1,4 +1,4 @@
-# 🖧 Homelab Axone — Infrastructure d'entreprise
+# 🏢 Homelab Axone — Infrastructure d'entreprise
 
 **Contexte :** PME fictive "Axone" — infogérance pour collectivités. Besoin d'une infrastructure centralisée avec parc hétérogène.
 
