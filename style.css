@@ -1,41 +1,46 @@
 :root {
-  /* ---------- palette : chlorophylle, ciel et iris ---------- */
-  --paper: #eef8f2; /* fond de page, sous les halos */
+  /* ---------- palette organique : sous-bois, argile et pierre ---------- */
+  --paper: #f1efe4; /* fond de page, lin */
   --white: #ffffff; /* verre, puces, reflets */
-  --ink: #0e231c; /* texte principal */
-  --ink-2: #3d574c; /* texte secondaire */
-  --green: #0c7a58; /* vert de travail : liens, accents */
-  --green-ink: #0a4433; /* vert tres sombre : labels et sous-titres */
-  --iris: #5a4bb5; /* violet : accent secondaire */
-  --mint: #3fcb96; /* menthe : filets et halos */
-  --amber: #f0c46a; /* miel : filets et halos */
+  --ink: #1b2a22; /* sous-bois : texte principal */
+  --ink-2: #56645a; /* mousse grisee : texte secondaire */
+  --green: #2e6a4f; /* feuille : liens, accents */
+  --green-ink: #163d2d; /* foret profonde : labels et sous-titres */
+  --clay: #c07a5a; /* terre cuite : accent chaud */
+  --sage: #8fbfa2; /* sauge : filets et halos */
+  --ochre: #d9a54e; /* ocre : filets et halos */
+  --sky: #7a9fb5; /* pierre bleue : filets et halos */
 
-  /* ---------- verre ---------- */
+  /* ---------- verre liquide ---------- */
   --glass: linear-gradient(
     150deg,
-    rgba(255, 255, 255, 0.72),
-    rgba(255, 255, 255, 0.36)
+    rgba(255, 255, 255, 0.66),
+    rgba(255, 255, 255, 0.26)
   ); /* verre translucide : cartes */
   --glass-strong: linear-gradient(
     150deg,
-    rgba(255, 255, 255, 0.92),
-    rgba(255, 255, 255, 0.72)
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.66)
   ); /* verre opaque : lecture longue */
   --glass-thin: linear-gradient(
     150deg,
-    rgba(255, 255, 255, 0.54),
-    rgba(255, 255, 255, 0.22)
+    rgba(255, 255, 255, 0.48),
+    rgba(255, 255, 255, 0.18)
   ); /* verre leger : tuiles, puces */
-  --glass-line: rgba(255, 255, 255, 0.78); /* arete du verre */
-  --line: rgba(12, 90, 68, 0.16); /* filets verts clairs */
-  --line-2: rgba(12, 90, 68, 0.3); /* filets verts appuyes */
-  --blur: 18px;
+  /* arete refractante : claire en haut a gauche, fine et froide ailleurs */
+  --glass-line: rgba(255, 255, 255, 0.72); /* arete du verre */
+  --line: rgba(46, 106, 79, 0.16); /* filets verts clairs */
+  --line-2: rgba(46, 106, 79, 0.3); /* filets verts appuyes */
+  --blur: 22px;
 
-  --shadow-s: 0 10px 22px -18px rgba(9, 54, 41, 0.55);
-  --shadow-m: 0 26px 60px -34px rgba(9, 54, 41, 0.6);
-  --sheen: inset 0 1px 0 rgba(255, 255, 255, 0.9); /* reflet sur l'arete */
+  --shadow-s: 0 12px 26px -20px rgba(24, 42, 33, 0.5);
+  --shadow-m: 0 32px 70px -38px rgba(24, 42, 33, 0.55);
+  --sheen: inset 0 1px 0 rgba(255, 255, 255, 0.95); /* reflet sur l'arete */
+  --glass-inner:
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    inset 0 -16px 32px -28px rgba(22, 61, 45, 0.8); /* epaisseur du verre */
 
-  --code-bg: #0b211a; /* fond des blocs de code */
+  --code-bg: #12241c; /* fond des blocs de code */
   --sans:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, sans-serif;
@@ -56,11 +61,11 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 ::selection {
-  background: rgba(63, 203, 150, 0.3);
+  background: rgba(143, 191, 162, 0.35);
   color: var(--ink);
 }
 
-/* fond : quatre halos (menthe, ciel, iris, miel) fixes derriere le verre */
+/* fond : quatre halos (sauge, pierre, argile, ocre) fixes derriere le verre */
 body {
   position: relative;
   margin: 0;
@@ -81,23 +86,23 @@ body::before {
   pointer-events: none;
   background-image:
     radial-gradient(
-      56% 52% at 4% -6%,
-      rgba(112, 208, 164, 0.55),
+      58% 54% at 2% -8%,
+      rgba(143, 191, 162, 0.6),
       transparent 68%
     ),
     radial-gradient(
-      46% 44% at 100% 0%,
-      rgba(140, 184, 245, 0.5),
+      48% 46% at 100% 0%,
+      rgba(122, 159, 181, 0.46),
       transparent 70%
     ),
     radial-gradient(
-      50% 46% at 94% 96%,
-      rgba(186, 160, 240, 0.42),
+      54% 50% at 96% 98%,
+      rgba(192, 122, 90, 0.38),
       transparent 72%
     ),
     radial-gradient(
-      54% 48% at 0% 100%,
-      rgba(250, 215, 138, 0.45),
+      58% 52% at 0% 100%,
+      rgba(217, 165, 78, 0.42),
       transparent 74%
     );
   background-repeat: no-repeat;
@@ -148,12 +153,12 @@ body::before {
   position: relative;
   isolation: isolate; /* le reflet passe sous le texte */
   padding: 44px 44px 40px;
-  border-radius: 28px;
+  border-radius: 30px;
   background: var(--glass);
   border: 1px solid var(--glass-line);
-  box-shadow: var(--shadow-m), var(--sheen);
-  -webkit-backdrop-filter: blur(22px) saturate(165%);
-  backdrop-filter: blur(22px) saturate(165%);
+  box-shadow: var(--shadow-m), var(--sheen), var(--glass-inner);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
   overflow: hidden;
 }
 .masthead > .wrap::after,
@@ -199,7 +204,7 @@ body::before {
    emojis, et un emoji dans un texte decoupe en degrade ressort en silhouette) */
 @supports (background-clip: text) or (-webkit-background-clip: text) {
   .home .masthead h1 {
-    background: linear-gradient(100deg, #0a3f31, #0f6b52 52%, #3f4fa8);
+    background: linear-gradient(100deg, #143a2b, #2f6f52 50%, #4d7186);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -311,8 +316,8 @@ body::before {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: linear-gradient(140deg, var(--mint), var(--iris));
-  box-shadow: 0 0 0 4px rgba(55, 201, 140, 0.16);
+  background: linear-gradient(140deg, var(--sage), var(--clay));
+  box-shadow: 0 0 0 4px rgba(143, 191, 162, 0.22);
 }
 .sec-hint {
   margin: 0;
@@ -346,42 +351,55 @@ body::before {
   flex-direction: column;
   height: 100%;
   padding: 22px 22px 20px;
-  border-radius: 20px;
+  border-radius: 24px;
   text-decoration: none;
   color: inherit;
   background: var(--glass);
   border: 1px solid var(--glass-line);
-  box-shadow: var(--shadow-s), var(--sheen);
-  -webkit-backdrop-filter: blur(var(--blur)) saturate(155%);
-  backdrop-filter: blur(var(--blur)) saturate(155%);
+  box-shadow: var(--shadow-s), var(--sheen), var(--glass-inner);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(180%);
+  backdrop-filter: blur(var(--blur)) saturate(180%);
   transition:
-    transform 0.22s ease,
-    box-shadow 0.22s ease,
-    border-color 0.22s ease;
+    transform 0.28s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
 }
-/* halo colore dans l'angle : donne la profondeur du verre */
+/* halos dans le verre : une teinte par carte + un reflet bas-droit */
 .card::before {
   content: "";
   position: absolute;
   z-index: -1;
-  inset: -70% 45% 55% -35%;
-  border-radius: 50%;
-  background: radial-gradient(
-    closest-side,
-    rgba(55, 201, 140, 0.34),
-    transparent 72%
-  );
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      90% 80% at 4% -12%,
+      rgba(143, 191, 162, 0.4),
+      transparent 62%
+    ),
+    radial-gradient(
+      65% 55% at 92% 108%,
+      rgba(255, 255, 255, 0.55),
+      transparent 72%
+    );
   pointer-events: none;
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
-/* une teinte par carte : menthe, iris, puis miel pour la carte a venir */
+/* une teinte par carte : sauge, argile, puis ocre pour la carte a venir */
 .grid > .card:nth-child(2)::before {
-  background: radial-gradient(
-    closest-side,
-    rgba(90, 75, 181, 0.26),
-    transparent 72%
-  );
+  background:
+    radial-gradient(
+      90% 80% at 4% -12%,
+      rgba(192, 122, 90, 0.3),
+      transparent 62%
+    ),
+    radial-gradient(
+      65% 55% at 92% 108%,
+      rgba(255, 255, 255, 0.55),
+      transparent 72%
+    );
 }
-/* filet superieur degrade : vert, iris, miel */
+/* filet superieur degrade : sauge, pierre, argile, ocre */
 .card::after {
   content: "";
   position: absolute;
@@ -391,18 +409,28 @@ body::before {
   height: 2px;
   background: linear-gradient(
     90deg,
-    var(--mint),
-    var(--iris) 55%,
-    var(--amber)
+    var(--sage),
+    var(--sky) 30%,
+    var(--clay) 62%,
+    var(--ochre)
   );
   opacity: 0.5;
-  transition: opacity 0.22s ease;
+  transition: opacity 0.25s ease;
 }
 a.card:hover,
 a.card:focus-visible {
-  transform: translateY(-3px);
-  border-color: rgba(12, 122, 88, 0.32);
-  box-shadow: var(--shadow-m), var(--sheen);
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 34px 64px -30px rgba(24, 42, 33, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.45),
+    var(--sheen),
+    var(--glass-inner);
+}
+/* le halo glisse doucement : le verre parait vivant sans clignoter */
+a.card:hover::before,
+a.card:focus-visible::before {
+  transform: scale(1.07);
 }
 a.card:hover::after,
 a.card:focus-visible::after {
@@ -421,15 +449,15 @@ a.card:focus-visible {
   margin-bottom: 12px;
   font-size: 1.05rem;
   line-height: 1;
-  border-radius: 12px;
+  border-radius: 13px;
   background: linear-gradient(
     155deg,
-    rgba(255, 255, 255, 0.95),
-    rgba(255, 255, 255, 0.5)
+    rgba(255, 255, 255, 0.96),
+    rgba(255, 255, 255, 0.46)
   );
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.92);
   box-shadow:
-    0 8px 16px -12px rgba(9, 54, 41, 0.8),
+    0 8px 16px -12px rgba(24, 42, 33, 0.8),
     var(--sheen);
 }
 .card__tag {
@@ -496,15 +524,20 @@ a.card:focus-visible .card__foot span {
 /* variante "a venir" : verre plus pale, arete en pointilles */
 .card--soon {
   background: var(--glass-thin);
-  border-style: dashed;
-  border-color: rgba(255, 255, 255, 0.7);
+  border: 1px dashed rgba(255, 255, 255, 0.82);
 }
 .card--soon::before {
-  background: radial-gradient(
-    closest-side,
-    rgba(240, 196, 106, 0.3),
-    transparent 72%
-  );
+  background:
+    radial-gradient(
+      90% 80% at 4% -12%,
+      rgba(217, 165, 78, 0.32),
+      transparent 62%
+    ),
+    radial-gradient(
+      65% 55% at 92% 108%,
+      rgba(255, 255, 255, 0.45),
+      transparent 72%
+    );
 }
 .card--soon::after {
   opacity: 0.22;
@@ -532,19 +565,21 @@ a.card:focus-visible .card__foot span {
 .skill {
   margin: 0;
   padding: 16px 16px 15px;
-  border-radius: 16px;
+  border-radius: 18px;
   background: var(--glass-thin);
   border: 1px solid rgba(255, 255, 255, 0.7);
   box-shadow: var(--shadow-s), var(--sheen);
-  -webkit-backdrop-filter: blur(14px) saturate(150%);
-  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(170%);
+  backdrop-filter: blur(16px) saturate(170%);
   transition:
     transform 0.2s ease,
-    border-color 0.2s ease;
+    box-shadow 0.2s ease;
 }
 .skill:hover {
   transform: translateY(-2px);
-  border-color: rgba(12, 122, 88, 0.3);
+  box-shadow:
+    0 20px 34px -22px rgba(24, 42, 33, 0.45),
+    var(--sheen);
 }
 .skill__icon {
   display: block;
@@ -570,12 +605,12 @@ a.card:focus-visible .card__foot span {
 .note {
   margin: 0 0 8px;
   padding: 24px 26px 22px;
-  border-radius: 22px;
+  border-radius: 24px;
   background: var(--glass-strong);
   border: 1px solid var(--glass-line);
-  box-shadow: var(--shadow-s), var(--sheen);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-  backdrop-filter: blur(16px) saturate(150%);
+  box-shadow: var(--shadow-s), var(--sheen), var(--glass-inner);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  backdrop-filter: blur(20px) saturate(170%);
 }
 .note h2 {
   margin: 0 0 16px;
@@ -595,7 +630,7 @@ a.card:focus-visible .card__foot span {
 .note__list li {
   margin: 0;
   padding-left: 14px;
-  border-left: 2px solid rgba(12, 122, 88, 0.25);
+  border-left: 2px solid rgba(46, 106, 79, 0.25);
   font-size: 0.84rem;
   line-height: 1.5;
   color: var(--ink-2);
@@ -637,7 +672,7 @@ p {
 a {
   color: var(--green);
   text-decoration: none;
-  border-bottom: 1px solid rgba(12, 122, 88, 0.35);
+  border-bottom: 1px solid rgba(46, 106, 79, 0.35);
 }
 a:hover {
   color: var(--green-ink);
@@ -718,11 +753,11 @@ table {
   font-size: 0.92rem;
   background: var(--glass-strong);
   border: 1px solid var(--glass-line);
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadow-s);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
 }
 thead th {
   background: rgba(12, 90, 68, 0.06);
@@ -790,15 +825,17 @@ li::marker {
   border: 1px solid var(--glass-line);
   border-radius: 999px;
   box-shadow: var(--sheen);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
-  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
   transition:
-    border-color 0.18s ease,
+    box-shadow 0.18s ease,
     transform 0.18s ease;
 }
 .back:hover {
   transform: translateY(-1px);
-  border-color: var(--green);
+  box-shadow:
+    0 14px 26px -20px rgba(24, 42, 33, 0.6),
+    var(--sheen);
   color: var(--green-ink);
 }
 
@@ -826,10 +863,11 @@ footer p {
   table,
   blockquote,
   .back {
-    background: #f7fcf9;
+    background: #f8f7ef;
+    border-color: rgba(24, 42, 33, 0.16);
   }
   .card--soon {
-    background: #f1faf5;
+    background: #f2f1e6;
   }
 }
 
@@ -875,12 +913,64 @@ footer p {
   }
   .grid {
     grid-template-columns: 1fr; /* une carte par ligne */
-    gap: 12px;
-    margin-bottom: 34px;
+    gap: 10px;
+    margin-bottom: 30px;
   }
+  /* cartes compactes : icone a gauche, texte a droite */
   .card {
-    padding: 20px 18px 18px;
-    border-radius: 18px;
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr);
+    grid-template-areas:
+      "icon tag"
+      "icon title"
+      "desc desc"
+      "pills pills"
+      "foot foot";
+    align-content: start;
+    column-gap: 12px;
+    padding: 15px 16px 14px;
+    border-radius: 20px;
+  }
+  .card__icon {
+    grid-area: icon;
+    align-self: start;
+    width: 34px;
+    height: 34px;
+    margin: 2px 0 0;
+    font-size: 0.98rem;
+    border-radius: 11px;
+  }
+  .card__tag {
+    grid-area: tag;
+    margin: 0;
+    font-size: 0.57rem;
+    line-height: 1.5;
+  }
+  .card h3 {
+    grid-area: title;
+    margin: 1px 0 0;
+    font-size: 0.98rem;
+    line-height: 1.3;
+  }
+  .card p {
+    grid-area: desc;
+    margin: 9px 0 0;
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+  .card .pills {
+    grid-area: pills;
+    margin: 9px 0 0;
+    gap: 5px;
+  }
+  .pill {
+    font-size: 0.57rem;
+    padding: 2px 8px;
+  }
+  .card__foot {
+    grid-area: foot;
+    margin: 10px 0 0;
+    font-size: 0.68rem;
   }
   .skills {
     margin-bottom: 34px;
@@ -894,7 +984,7 @@ footer p {
   }
   .note {
     padding: 20px 18px 18px;
-    border-radius: 18px;
+    border-radius: 20px;
   }
   .note__list {
     gap: 10px;
@@ -905,12 +995,12 @@ footer p {
   article h2 {
     font-size: 1.2rem;
   }
-  /* le flou coute cher sur mobile : on l'allege */
+  /* le flou coute cher sur mobile : on l'allege un peu */
   .masthead > .wrap,
   .masthead > .wrap-wide,
   .card {
-    -webkit-backdrop-filter: blur(12px) saturate(150%);
-    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(165%);
+    backdrop-filter: blur(16px) saturate(165%);
   }
 }
 
