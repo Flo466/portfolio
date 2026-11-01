@@ -5,221 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#f1efe4" />
-    <meta
-      name="description"
-      content="Portfolio de Florent Vazeux, administrateur d'infrastructures sécurisées : Ansible, Proxmox VE, haute disponibilité, supervision et auto-hébergement."
-    />
-    <title>Florent Vazeux — Administrateur d'infrastructures sécurisées</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="robots" content="noindex" />
+    <title>Florent Vazeux — Intro</title>
+    <link rel="stylesheet" href="intro.css" />
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=index.html" />
+    </noscript>
   </head>
-  <body class="home">
-    <a class="skip" href="#contenu">Aller au contenu</a>
+  <body>
+    <main class="intro" aria-label="Introduction animée">
+      <!-- Scène 1 : les trois chantiers -->
+      <section class="scene is-on" id="scene-bricks" aria-hidden="true">
+        <div class="bricks">
+          <article class="brick">
+            <span class="brick__tag">Infrastructure as code</span>
+            <div class="brick__stage ans">
+              <div class="ans__play">ansible-playbook site.yml</div>
+              <div class="ans__row">
+                <span class="srv" style="--i:0">srv-01</span>
+                <span class="srv" style="--i:1">srv-02</span>
+                <span class="srv" style="--i:2">srv-03</span>
+                <span class="srv" style="--i:3">srv-04</span>
+                <span class="srv" style="--i:4">srv-05</span>
+              </div>
+            </div>
+            <p class="brick__label">Ansible · 5 serveurs Debian</p>
+          </article>
 
-    <header class="masthead">
-      <div class="wrap">
-        <p class="eyebrow">
-          <span aria-hidden="true">🌱</span>
-          GRETA 91 &middot; Titre professionnel AIS en cours
-        </p>
-        <h1>Infrastructures systèmes, réseau et sécurité</h1>
-        <p class="lede">
-          Des infrastructures montées de bout en bout, documentées et
-          reproductibles&nbsp;: automatisation, virtualisation, haute
-          disponibilité, supervision, auto-hébergement.
-        </p>
-        <div class="contact">
-          <a href="https://www.linkedin.com/in/flo-vz04/">
-            <span aria-hidden="true">💼</span> LinkedIn
-          </a>
-          <a href="mailto:florentbv@outlook.fr">
-            <span aria-hidden="true">✉️</span> florentbv@outlook.fr
-          </a>
+          <article class="brick">
+            <span class="brick__tag">Haute disponibilité</span>
+            <div class="brick__stage pve">
+              <div class="pve__row">
+                <div class="node" style="--i:0"><span>pve-01</span></div>
+                <div class="node" style="--i:1"><span>pve-02</span></div>
+                <div class="node node--fail" style="--i:2">
+                  <span>pve-03</span>
+                  <i class="vm">VM 101</i>
+                </div>
+              </div>
+              <div class="pve__msg">
+                <span class="m m1">quorum 3/3 ✓</span>
+                <span class="m m2">pve-03 hors ligne</span>
+                <span class="m m3">VM 101 relancée sur pve-01 · 4 s</span>
+              </div>
+            </div>
+            <p class="brick__label">Proxmox VE · cluster à 3 nœuds</p>
+          </article>
+
+          <article class="brick">
+            <span class="brick__tag">Systèmes et réseau</span>
+            <div class="brick__stage axo">
+              <div class="axo__sites">
+                <div class="site" style="--i:0"><span>Site A</span><div><i></i><i></i></div></div>
+                <div class="site" style="--i:1"><span>Site B</span><div><i></i><i></i></div></div>
+                <div class="site" style="--i:2"><span>Site C</span><div><i></i><i></i></div></div>
+              </div>
+              <div class="axo__line"></div>
+              <div class="axo__ad">annuaire AD</div>
+              <div class="axo__wazuh">● Wazuh</div>
+            </div>
+            <p class="brick__label">Homelab Axone · 6 machines, 3 sites</p>
+          </article>
         </div>
-      </div>
-    </header>
-
-    <main class="wrap" id="contenu">
-      <div class="sec-head">
-        <h2 class="sec-title">Projets</h2>
-        <p class="sec-hint">3 chantiers documentés</p>
-      </div>
-
-      <div class="grid">
-        <a
-          class="card"
-          href="https://flo466.github.io/Full-Project-Ansible/"
-          target="_blank"
-          rel="noopener"
-        >
-          <span class="card__icon" aria-hidden="true">🧩</span>
-          <span class="card__tag">Infrastructure as code</span>
-          <h3>Automatisation multiservice avec Ansible</h3>
-          <p>
-            Cinq serveurs Debian déployés et configurés au démarrage par des
-            rôles rejouables.
-          </p>
-          <div class="pills">
-            <span class="pill">Ansible</span>
-            <span class="pill">Proxmox VE</span>
-            <span class="pill">cloud-init</span>
-          </div>
-          <span class="card__foot">
-            Consulter le projet <span aria-hidden="true">↗</span>
-          </span>
-        </a>
-
-        <a
-          class="card"
-          href="https://flo466.github.io/santelia-iac/"
-          target="_blank"
-          rel="noopener"
-        >
-          <span class="card__icon" aria-hidden="true">🛡️</span>
-          <span class="card__tag">Haute disponibilité</span>
-          <h3>Cluster Proxmox VE et recette de bascule</h3>
-          <p>
-            Trois nœuds en cluster, quorum tenu et bascule chronométrée pendant
-            la panne.
-          </p>
-          <div class="pills">
-            <span class="pill">cluster</span>
-            <span class="pill">quorum</span>
-            <span class="pill">ZFS</span>
-          </div>
-          <span class="card__foot">
-            Consulter le projet <span aria-hidden="true">↗</span>
-          </span>
-        </a>
-
-        <a
-          class="card"
-          href="https://flo466.github.io/axone/"
-          target="_blank"
-          rel="noopener"
-        >
-          <span class="card__icon" aria-hidden="true">🏢</span>
-          <span class="card__tag">Systèmes et réseau</span>
-          <h3>Homelab Axone, parc hétérogène</h3>
-          <p>
-            Six machines sur trois sites, un annuaire unique, des partages
-            cloisonnés par service et une supervision de chaque poste.
-          </p>
-          <div class="pills">
-            <span class="pill">Active Directory</span>
-            <span class="pill">Wazuh</span>
-            <span class="pill">Tailscale</span>
-          </div>
-          <span class="card__foot">
-            Consulter le projet <span aria-hidden="true">↗</span>
-          </span>
-        </a>
-
-        <div class="card card--soon">
-          <span class="card__icon" aria-hidden="true">🌿</span>
-          <span class="card__tag">En préparation</span>
-          <h3>Prochain chantier</h3>
-          <p>Le prochain homelab est en cours de documentation.</p>
-          <span class="card__foot">Bientôt en ligne</span>
-        </div>
-      </div>
-
-      <section class="skills" aria-labelledby="skills-title">
-        <div class="sec-head">
-          <h2 class="sec-title" id="skills-title">Compétences</h2>
-          <p class="sec-hint">9 domaines</p>
-        </div>
-        <ul class="skills__grid">
-          <li class="skill">
-            <span class="skill__icon" aria-hidden="true">💻</span>
-            <h3>Systèmes</h3>
-            <p>
-              Windows Server 2022 &middot; Debian 13 &middot; Windows 11 &middot; Active Directory
-            </p>
-          </li>
-          <li class="skill">
-            <span class="skill__icon" aria-hidden="true">🌐</span>
-            <h3>Réseau</h3>
-            <p>
-              VLAN &middot; DNS &middot; DHCP &middot; NAT &middot; ponts &middot; Tailscale
-            </p>
-          </li>
-          <li class="skill">
-            <span class="skill__icon" aria-hidden="true">⚙️</span>
-            <h3>Automatisation</h3>
-            <p>
-              Ansible &middot; rôles &middot; Jinja2 &middot; cloud-init &middot; timers systemd
-            </p>
-          </li>
-          <li class="skill">
-            <span class="skill__icon" aria-hidden="true">🧊</span>
-            <h3>Virtualisation</h3>
-            <p>
-              Proxmox VE &middot; cluster &middot; quorum &middot; HA &middot; réplication ZFS
-            </p>
-          </li>
-          <li class="skill">
-            <span class="skill__icon" aria-hidden="true">🧰</span>
-            <h3>Services</h3>
-            <p>
-              Apache &middot; Nginx &middot; PHP &middot; MariaDB &middot; PostgreSQL
-            </p>
-          </li>
-          <li class="skill">
-            <span class="skill__icon" aria-hidden="true">🛰️</span>
-            <h3>Supervision</h3>
-            <p>
-              Wazuh (SIEM) &middot; GLPI
-            </p>
-          </li>
-          <li class="skill">
-            <span class="skill__icon" aria-hidden="true">💾</span>
-            <h3>Sauvegardes</h3>
-            <p>
-              Proxmox Backup Server &middot; 3-2-1 &middot; déduplication &middot; restic
-            </p>
-          </li>
-          <li class="skill">
-            <span class="skill__icon" aria-hidden="true">🔁</span>
-            <h3>Continuité</h3>
-            <p>
-              RTO &middot; RPO &middot; PCA et PRA &middot; test de bascule
-            </p>
-          </li>
-          <li class="skill">
-            <span class="skill__icon" aria-hidden="true">🔐</span>
-            <h3>Sécurité</h3>
-            <p>
-              GPO &middot; moindre privilège &middot; certificats &middot; HTTPS/TLS
-            </p>
-          </li>
-        </ul>
       </section>
 
-      <section class="note" aria-labelledby="note-title">
-        <h2 id="note-title">Comment ces projets sont documentés</h2>
-        <ul class="note__list">
-          <li>
-            <strong>🧭 Contexte &amp; choix</strong>
-            La démarche et les raisons techniques.
-          </li>
-          <li>
-            <strong>📏 Points de vigilance</strong>
-            La limite rencontrée, la mesure appliquée.
-          </li>
-          <li>
-            <strong>📝 Limites assumées</strong>
-            Ce qui ne marche pas du premier coup.
-          </li>
-        </ul>
+      <!-- Scène 2 : console Linux, courte -->
+      <section class="scene" id="scene-term" aria-hidden="true">
+        <div class="term">
+          <div class="term__bar">
+            <i></i><i></i><i></i>
+            <span>florent@homelab — bash</span>
+          </div>
+          <div class="term__body">
+            <div id="out"></div>
+          </div>
+        </div>
       </section>
     </main>
 
-    <footer>
-      <div class="wrap">
-        <p>
-          Florent Vazeux &middot; Administrateur d'infrastructures sécurisées
-        </p>
-      </div>
-    </footer>
+    <div class="foot">
+      <p>Une touche pour passer</p>
+      <button type="button" class="skip">Passer l’intro</button>
+    </div>
+
+    <script src="intro.js"></script>
   </body>
 </html>
