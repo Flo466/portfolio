@@ -48,7 +48,7 @@
   const COMMANDE = './lancer-portfolio';
   const STATUTS = [
     ['[ ok ] Ansible      5 serveurs déployés', 'ok'],
-    ['[ ok ] Proxmox VE   quorum 3/3, bascule testée', 'ok'],
+    ['[ ok ] Proxmox VE   quorum 2/3, bascule testée', 'ok'],
     ['[ ok ] Axone        annuaire, partages, supervision', 'ok'],
     ['Portfolio prêt.', ''],
   ];
@@ -107,7 +107,7 @@
       bricks.hidden = true;
       term.classList.add('is-on');
     } else {
-      await sleep(4200);
+      await sleep(5100);
       if (fini) return;
       bricks.classList.remove('is-on');
       await sleep(400);

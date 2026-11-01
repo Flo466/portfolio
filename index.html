@@ -36,20 +36,19 @@
             <span class="brick__tag">Haute disponibilité</span>
             <div class="brick__stage pve">
               <div class="pve__row">
-                <div class="node" style="--i:0"><span>pve-01</span></div>
-                <div class="node" style="--i:1"><span>pve-02</span></div>
-                <div class="node node--fail" style="--i:2">
-                  <span>pve-03</span>
-                  <i class="vm">VM 101</i>
+                <div class="node node--fail" style="--i:0"><span>pve-a</span><i class="vm">VM 101</i></div>
+                <div class="node" style="--i:1"><span>pve-b</span></div>
+                <div class="node" style="--i:2">
+                  <span>pve-c</span>
                 </div>
               </div>
               <div class="pve__msg">
                 <span class="m m1">quorum 3/3 ✓</span>
-                <span class="m m2">pve-03 hors ligne</span>
-                <span class="m m3">VM 101 relancée sur pve-01 · 4 s</span>
+                <span class="m m2">pve-a hors ligne · quorum 2/3 ✓</span>
+                <span class="m m3">VM 101 sur pve-b · 4 s</span>
               </div>
             </div>
-            <p class="brick__label">Proxmox VE · cluster à 3 nœuds</p>
+            <p class="brick__label">Proxmox VE · pve-c = témoin de quorum</p>
           </article>
 
           <article class="brick">

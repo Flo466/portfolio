@@ -465,7 +465,7 @@ body::before {
 }
 @keyframes move {
   to {
-    transform: translateX(-224px);
+    transform: translateX(112px);
   }
 }
 @keyframes down {
@@ -532,11 +532,11 @@ body::before {
   /* une seule cellule : les trois briques se superposent */
   .brick {
     grid-area: 1 / 1;
-    animation: brique 4.2s linear both;
+    animation: brique 5.1s linear both;
   }
   .brick:nth-child(1) { animation-delay: 0s; }
-  .brick:nth-child(2) { animation-delay: 1.4s; }
-  .brick:nth-child(3) { animation-delay: 2.8s; }
+  .brick:nth-child(2) { animation-delay: 1.7s; }
+  .brick:nth-child(3) { animation-delay: 3.4s; }
 
   /* chaque brique est complète dès son apparition */
   .ans__play,
@@ -567,4 +567,11 @@ body::before {
   28%  { opacity: 1; transform: none; }
   33%  { opacity: 0; transform: translateY(-6px); }
   100% { opacity: 0; transform: translateY(-6px); }
+}
+
+/* mobile : la VM apparaît déjà sur pve-b, animations internes coupées */
+@media (max-width: 760px) {
+  .node--fail .vm {
+    transform: translateX(112px);
+  }
 }
