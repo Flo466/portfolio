@@ -518,3 +518,53 @@ body::before {
     transition: none !important;
   }
 }
+
+/* ============ mobile : les trois briques défilent ============ */
+@media (max-width: 760px) {
+  /* on annule le masquage pose plus haut */
+  .brick:nth-child(n + 2) {
+    display: block;
+  }
+  .bricks {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  /* une seule cellule : les trois briques se superposent */
+  .brick {
+    grid-area: 1 / 1;
+    animation: brique 4.2s linear both;
+  }
+  .brick:nth-child(1) { animation-delay: 0s; }
+  .brick:nth-child(2) { animation-delay: 1.4s; }
+  .brick:nth-child(3) { animation-delay: 2.8s; }
+
+  /* chaque brique est complète dès son apparition */
+  .ans__play,
+  .srv,
+  .srv::after,
+  .node,
+  .node--fail,
+  .node--fail .vm,
+  .site,
+  .axo__line,
+  .axo__ad,
+  .axo__wazuh,
+  .m3 {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+  /* trois messages Proxmox superposés : on garde le verdict final */
+  .m1,
+  .m2 {
+    display: none;
+  }
+}
+
+@keyframes brique {
+  0%   { opacity: 0; transform: translateY(10px); }
+  10%  { opacity: 1; transform: none; }
+  28%  { opacity: 1; transform: none; }
+  33%  { opacity: 0; transform: translateY(-6px); }
+  100% { opacity: 0; transform: translateY(-6px); }
+}
