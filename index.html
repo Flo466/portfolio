@@ -41,7 +41,7 @@
     <main class="wrap" id="contenu">
       <div class="sec-head">
         <h2 class="sec-title">Projets</h2>
-        <p class="sec-hint">2 chantiers documentés</p>
+        <p class="sec-hint">3 chantiers documentés</p>
       </div>
 
       <div class="grid">
@@ -91,6 +91,29 @@
           </span>
         </a>
 
+        <a
+          class="card"
+          href="https://flo466.github.io/axone/"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="card__icon" aria-hidden="true">🏢</span>
+          <span class="card__tag">Systèmes et réseau</span>
+          <h3>Homelab Axone, parc hétérogène</h3>
+          <p>
+            Six machines sur trois sites, un annuaire unique, des partages
+            cloisonnés par service et une supervision de chaque poste.
+          </p>
+          <div class="pills">
+            <span class="pill">Active Directory</span>
+            <span class="pill">Wazuh</span>
+            <span class="pill">Tailscale</span>
+          </div>
+          <span class="card__foot">
+            Consulter le projet <span aria-hidden="true">↗</span>
+          </span>
+        </a>
+
         <div class="card card--soon">
           <span class="card__icon" aria-hidden="true">🌿</span>
           <span class="card__tag">En préparation</span>
@@ -103,50 +126,71 @@
       <section class="skills" aria-labelledby="skills-title">
         <div class="sec-head">
           <h2 class="sec-title" id="skills-title">Compétences</h2>
-          <p class="sec-hint">8 domaines</p>
+          <p class="sec-hint">9 domaines</p>
         </div>
         <ul class="skills__grid">
           <li class="skill">
-            <span class="skill__icon" aria-hidden="true">🖥️</span>
+            <span class="skill__icon" aria-hidden="true">💻</span>
             <h3>Systèmes</h3>
             <p>
-              Windows Server 2022 &middot; Debian 13 &middot; Active Directory
+              Windows Server 2022 &middot; Debian 13 &middot; Windows 11 &middot; Active Directory
             </p>
           </li>
           <li class="skill">
             <span class="skill__icon" aria-hidden="true">🌐</span>
             <h3>Réseau</h3>
-            <p>VLAN &middot; DNS &middot; DHCP &middot; WireGuard</p>
+            <p>
+              VLAN &middot; DNS &middot; DHCP &middot; NAT &middot; ponts &middot; Tailscale
+            </p>
           </li>
           <li class="skill">
             <span class="skill__icon" aria-hidden="true">⚙️</span>
             <h3>Automatisation</h3>
-            <p>Ansible &middot; cloud-init &middot; Jinja2</p>
+            <p>
+              Ansible &middot; rôles &middot; Jinja2 &middot; cloud-init &middot; timers systemd
+            </p>
           </li>
           <li class="skill">
             <span class="skill__icon" aria-hidden="true">🧊</span>
             <h3>Virtualisation</h3>
-            <p>Proxmox VE &middot; KVM &middot; LXC &middot; Docker</p>
+            <p>
+              Proxmox VE &middot; cluster &middot; quorum &middot; HA &middot; réplication ZFS
+            </p>
           </li>
           <li class="skill">
             <span class="skill__icon" aria-hidden="true">🧰</span>
             <h3>Services</h3>
-            <p>Apache &middot; PHP &middot; MariaDB &middot; PostgreSQL</p>
+            <p>
+              Apache &middot; Nginx &middot; PHP &middot; MariaDB &middot; PostgreSQL
+            </p>
           </li>
           <li class="skill">
             <span class="skill__icon" aria-hidden="true">🛰️</span>
             <h3>Supervision</h3>
-            <p>Wazuh (SIEM) &middot; GLPI</p>
+            <p>
+              Wazuh (SIEM) &middot; GLPI
+            </p>
           </li>
           <li class="skill">
             <span class="skill__icon" aria-hidden="true">💾</span>
             <h3>Sauvegardes</h3>
-            <p>restic &middot; Backrest &middot; instantanés ZFS</p>
+            <p>
+              Proxmox Backup Server &middot; 3-2-1 &middot; déduplication &middot; restic
+            </p>
+          </li>
+          <li class="skill">
+            <span class="skill__icon" aria-hidden="true">🔁</span>
+            <h3>Continuité</h3>
+            <p>
+              RTO &middot; RPO &middot; PCA et PRA &middot; test de bascule
+            </p>
           </li>
           <li class="skill">
             <span class="skill__icon" aria-hidden="true">🔐</span>
             <h3>Sécurité</h3>
-            <p>GPO &middot; moindre privilège &middot; HTTPS/TLS</p>
+            <p>
+              GPO &middot; moindre privilège &middot; certificats &middot; HTTPS/TLS
+            </p>
           </li>
         </ul>
       </section>

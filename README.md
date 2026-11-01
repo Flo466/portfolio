@@ -18,6 +18,7 @@ Les projets sont documentés de la même façon : le contexte, la démarche, les
 | ----------------------------------------------------------------- | ---------------------- | --------------------------------------------- | ----------------------------------------------------------- |
 | **Automatisation d'une infrastructure multiservice avec Ansible** | Infrastructure as Code | Ansible, Proxmox VE, cloud-init, Debian 13    | [Consulter](https://flo466.github.io/Full-Project-Ansible/) |
 | **Cluster Proxmox VE et recette de bascule**                      | Haute disponibilité    | Proxmox VE, cluster, quorum, ZFS, réplication | [Consulter](https://flo466.github.io/santelia-iac/)         |
+| **Homelab Axone, parc hétérogène**                                | Systèmes et réseau     | Active Directory, GPO, Wazuh, GLPI, Ansible, Tailscale | [Consulter](https://flo466.github.io/axone/) |
 
 _Chaque nouveau chantier ajoute une ligne à ce tableau._
 
@@ -31,9 +32,10 @@ _Chaque nouveau chantier ajoute une ligne à ce tableau._
 | **Réseau**              | VLAN, DHCP, DNS, NAT, routage, ponts internes, réseau isolé avec NAT, reverse proxy, VPN WireGuard (Tailscale), MagicDNS          |
 | **Automatisation**      | Ansible (inventaire, rôles, playbooks, variables, Jinja2, handlers, idempotence), cloud-init, scripts, cron / systemd timers      |
 | **Virtualisation**      | Proxmox VE (VM, template cloud-init, clone lié, cluster, quorum, HA, réplication ZFS), KVM (libvirt), LXC, Docker, Docker Compose |
-| **Serveurs & services** | Apache, PHP, MariaDB, PostgreSQL                                                                                                  |
+| **Serveurs & services** | Apache, Nginx, PHP, MariaDB, PostgreSQL                                                                                            |
 | **Supervision**         | Wazuh (SIEM), GLPI                                                                                                                |
-| **Sauvegardes**         | restic, Backrest, instantanés et clonage                                                                                          |
+| **Sauvegardes**         | Proxmox Backup Server, stratégie 3-2-1, déduplication, restauration, restic, Backrest, instantanés ZFS                            |
+| **Continuité**          | RTO, RPO, PCA / PRA, fenêtre de perte, test de bascule HA                                                                         |
 | **Sécurité**            | GPO, moindre privilège, cloisonnement, durcissement SSH, HTTPS/TLS                                                                |
 
 _Cette liste s'enrichit au fil des projets._
