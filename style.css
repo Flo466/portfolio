@@ -1177,3 +1177,13 @@ footer p {
     border: 1px solid #ccc;
   }
 }
+
+/* ============ accueil : pleine largeur sur grand ecran ============ */
+/* le conteneur s'etale, la prose reste bornee par .lede (62ch) */
+@media (min-width: 900px) {
+  .home .wrap,
+  .home .wrap-wide {
+    max-width: none;
+    padding-inline: clamp(28px, 4vw, 72px);
+  }
+}
